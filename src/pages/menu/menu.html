@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Menu of 01/28/2018</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let item of xmlItems" (click)="itemSelected(item)">
+      {{ item.name }}
+    </button>
+  </ion-list>
+</ion-content>
