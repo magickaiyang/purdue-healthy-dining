@@ -9,3 +9,7 @@ Notices for Developers:
 1. Displays the date and gets today's menu
 1. Able to choose dining courts
 1. Shows dishes in all stations
+
+TODO:
+1. Find nutrition data for dishes
+2. Get debugging ready on iOS plaftorm
