@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'page-menu',
@@ -9,34 +8,28 @@ import 'rxjs/add/operator/map';
 export class MenuPage {
 
   xmlItems: any;
-
-  items = [
-    'Mega Man X',
-    'The Legend of Zelda',
-    'Pac-Man',
-    'Super Mario World',
-    'Street Fighter II',
-    'Half Life',
-    'Final Fantasy VII',
-    'Star Fox',
-    'Donkey Kong III',
-    'GoldenEye 007',
-    'Doom',
-    'Fallout',
-    'GTA',
-    'Halo'
-  ];
+  today: any;
+  diningcourt:string;
 
   itemSelected(item: string) {
     console.log("Selected Item", item);
   }
 
   constructor(private http: HttpClient) {
-
+    this.today=Date.now();
   }
 
   loadXML() {
-    this.http.get('https://api.hfs.purdue.edu/menus/v2/locations/Wiley/2018-02-01') //hard-coded for now!!
+    var dateFormatted=document.getElementById("date").innerText;
+    dateFormatted=dateFormatted.substr(6,10);
+
+    var url='https://api.hfs.purdue.edu/menus/v2/locations/';
+    url+=this.diningcourt;
+    url+='/';
+    url+=dateFormatted;
+    //console.log(url);
+
+    this.http.get(url)
       .subscribe((data) => {
           this.parseXML(data)
             .then((data) => {
@@ -48,24 +41,29 @@ export class MenuPage {
 
   parseXML(data) {
     return new Promise(resolve => {
-      var k, arr = [];
 
-      var obj = data.Meals[0].Stations[1];
-      for (k in obj.Items) {
-        var item = obj.Items[k];
-        arr.push({
-          name: item.Name,
-        });
+      var i,j,k, dishes = [];
+
+      for(i in data.Meals) {
+        var meal=data.Meals[i];
+        for(j in meal.Stations) {
+         var station=meal.Stations[j];
+         for(k in station.Items) {
+           var item= station.Items[k];
+           dishes.push({name:item.Name});
+         }
+        }
       }
 
-      resolve(arr);
+      resolve(dishes);
     });
 
 
   }
 
-  ionViewWillEnter() {
+  onSelect() {
     this.loadXML();
   }
+
 }
 

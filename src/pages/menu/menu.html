@@ -1,10 +1,22 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Menu of 01/28/2018</ion-title>
+    <ion-title>Menu</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
+  <p id="date">Date: {{today | date: 'yyyy-MM-dd' }}</p>
+  <ion-item>
+    <ion-label>Dining Court</ion-label>
+    <ion-select [(ngModel)]="diningcourt" (ionChange)="onSelect()">
+      <ion-option value="Earhart">Earhart</ion-option>
+      <ion-option value="Ford">Ford</ion-option>
+      <ion-option value="Wiley">Wiley</ion-option>
+      <ion-option value="Hillenbrand">Hillenbrand</ion-option>
+      <ion-option value="Windsor">Windsor</ion-option>
+      <ion-option value="The Gathering Place">The Gathering Place</ion-option>
+    </ion-select>
+  </ion-item>
   <ion-list>
     <button ion-item *ngFor="let item of xmlItems" (click)="itemSelected(item)">
       {{ item.name }}
