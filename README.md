@@ -21,15 +21,27 @@ An app that allows Purdue students to eat healthier in the dining courts. The ap
 ---
 
 ### TODOs
-1. Find nutrition data for dishes
+1. Find nutrition data for dishes (DONE)
 2. Get debugging ready on iOS plaftorm
+3. Get the calculation page and cart working
+4. Create a healthiness index algorithm to rank different combinations of foods
+5. Make a clearer design draft
+6. Full design document
+7. Suggestion page
+8. Settings page
+
+---
+
+### Design
+
+<img src="https://github.com/magickaiyang/purdue-healthy-dining/blob/master/DesignFlowDraft.jpeg">
 
 ---
 
 ### Contributors
 
 - Zhao KaiYang 
-- YiHeng
+- Wu YiHeng
 - Aarushi
 - Hyejin Kim 
 - Eric Chen 
