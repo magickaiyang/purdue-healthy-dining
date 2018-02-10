@@ -9,24 +9,27 @@ export class MenuPage {
 
   xmlItems: any;
   today: any;
-  diningcourt:string;
+  diningcourt: string;
+  mealTime: string;
+  meals: any;
+  savedData: any;
+
+  constructor(private http: HttpClient) {
+    this.today = Date.now();
+  }
 
   itemSelected(item: string) {
     console.log("Selected Item", item);
   }
 
-  constructor(private http: HttpClient) {
-    this.today=Date.now();
-  }
-
   loadXML() {
-    var dateFormatted=document.getElementById("date").innerText;
-    dateFormatted=dateFormatted.substr(6,10);
+    var dateFormatted = document.getElementById("date").innerText;
+    dateFormatted = dateFormatted.substr(6, 10);
 
-    var url='https://api.hfs.purdue.edu/menus/v2/locations/';
-    url+=this.diningcourt;
-    url+='/';
-    url+=dateFormatted;
+    var url = 'https://api.hfs.purdue.edu/menus/v2/locations/';
+    url += this.diningcourt;
+    url += '/';
+    url += dateFormatted;
     //console.log(url);
 
     this.http.get(url)
@@ -34,6 +37,7 @@ export class MenuPage {
           this.parseXML(data)
             .then((data) => {
               this.xmlItems = data;
+              this.onSelectMeal();
             })
         }
       );
@@ -41,21 +45,21 @@ export class MenuPage {
 
   parseXML(data) {
     return new Promise(resolve => {
+      this.savedData = data;  //save data to process after a meal time has been selected
 
-      var i,j,k, dishes = [];
-
-      for(i in data.Meals) {
-        var meal=data.Meals[i];
-        for(j in meal.Stations) {
-         var station=meal.Stations[j];
-         for(k in station.Items) {
-           var item= station.Items[k];
-           dishes.push({name:item.Name});
-         }
-        }
+      var i, meals = [], dishes = [];
+      for (i in data.Meals) {  //get list of meal times
+        var meal = data.Meals[i];
+        meals.push({name: meal.Name});
       }
 
-      resolve(dishes);
+      this.meals = meals;
+      if (!this.meals)
+        this.mealTime="";
+      else
+        this.mealTime = this.meals[0].name;  //set default meal time to the first available
+
+      resolve(dishes);  //dish list is empty for now
     });
 
 
@@ -63,6 +67,26 @@ export class MenuPage {
 
   onSelect() {
     this.loadXML();
+  }
+
+  onSelectMeal() {
+    var i, j, k, dishes = [];
+
+    for (i in this.savedData.Meals) {
+      var meal = this.savedData.Meals[i];
+
+      if (meal.Name != this.mealTime) //only display relevant dishes
+        continue;
+
+      for (j in meal.Stations) {
+        var station = meal.Stations[j];
+        for (k in station.Items) {
+          var item = station.Items[k];
+          dishes.push({name: item.Name});
+        }
+      }
+    }
+    this.xmlItems = dishes;
   }
 
 }

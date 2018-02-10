@@ -17,6 +17,14 @@
       <ion-option value="The Gathering Place">The Gathering Place</ion-option>
     </ion-select>
   </ion-item>
+  <ion-item>
+    <ion-label>Meal Time</ion-label>
+    <ion-select [(ngModel)]="mealTime" (ionChange)="onSelectMeal()">
+      <ion-option *ngFor="let mt of meals" [value]="mt.name">
+        {{mt.name}}
+      </ion-option>
+    </ion-select>
+  </ion-item>
   <ion-list>
     <button ion-item *ngFor="let item of xmlItems" (click)="itemSelected(item)">
       {{ item.name }}
