@@ -17,6 +17,8 @@ An app that allows Purdue students to eat healthier in the dining courts. The ap
 1. Displays the date and gets today's menu
 2. Able to choose dining courts
 3. Shows dishes in all stations
+02/10/2018:
+1. Dynamic meal time selection. Shows only relevant dishes.
 
 ---
 
@@ -40,8 +42,8 @@ An app that allows Purdue students to eat healthier in the dining courts. The ap
 
 ### Contributors
 
-- Zhao KaiYang 
-- Wu YiHeng
+- Kaiyang Zhao 
+- Yiheng Wu
 - Aarushi
 - Hyejin Kim 
 - Eric Chen 
