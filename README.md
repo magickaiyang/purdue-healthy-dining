@@ -7,20 +7,22 @@ An app that allows Purdue students to eat healthier in the dining courts. The ap
 ### Environment setup for Developers
 1. Get latest LTS version of Node.js
 2. npm install -g cordova ionic
-3. Clone the repository
+3. Clone the repository.
 4. Start working!
 
 ---
 
 ### Updates
 02/03/2018: 
-1. Displays the date and gets today's menu
-2. Able to choose dining courts
-3. Shows dishes in all stations
+1. Displays the date and gets today's menu.
+2. Able to choose dining courts.
+3. Shows dishes in all stations.
 
 02/10/2018:
 1. Dynamic meal time selection. Shows only relevant dishes.
 2. Group dishes by station.
+3. More robust code (when no meals are served).
+4. onClick() adds the dish {name,id} to the array.
 
 ---
 

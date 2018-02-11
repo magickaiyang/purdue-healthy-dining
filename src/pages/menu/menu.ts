@@ -6,22 +6,23 @@ import {HttpClient} from '@angular/common/http';
   templateUrl: 'menu.html'
 })
 export class MenuPage {
-
-  xmlItems: any;
   today: any;
   diningcourt: string;
   mealTime: string;
   meals: any;
   savedData: any;
   savedMeal: any;
+  public selectedID: any;
 
   constructor(private http: HttpClient) {
     this.today = Date.now();
     this.savedMeal={Stations:[{Items:[]}]};  //placeholder
+    this.selectedID=[];
   }
 
-  itemSelected(item: string) {
-    console.log("Selected Item", item);
+  itemSelected(item) {
+    this.selectedID.push({name:item.Name,id:item.ID});
+    console.log(this.selectedID);
   }
 
   loadXML() {
@@ -38,7 +39,6 @@ export class MenuPage {
       .subscribe((data) => {
           this.parseXML(data)
             .then((data) => {
-              this.xmlItems = data;
               this.onSelectMeal();
             })
         }
@@ -56,41 +56,29 @@ export class MenuPage {
       }
 
       this.meals = meals;
-      if (!this.meals)
+      if (!this.meals[0])
         this.mealTime="";
       else
         this.mealTime = this.meals[0].name;  //set default meal time to the first available
 
       resolve(dishes);  //dish list is empty for now
     });
-
-
   }
 
   onSelect() {
+    this.savedMeal={Stations:[{Items:[]}]};  //clear the list when dining court is changed
     this.loadXML();
   }
 
   onSelectMeal() {
-    var i, j, k, dishes = [];
+    var i;
 
     for (i in this.savedData.Meals) {
       var meal = this.savedData.Meals[i];
-
       if (meal.Name != this.mealTime) //only display relevant dishes
         continue;
       this.savedMeal=meal;
-
-      for (j in meal.Stations) {
-        var station = meal.Stations[j];
-        for (k in station.Items) {
-          var item = station.Items[k];
-          dishes.push({name: item.Name});
-        }
-      }
     }
-    this.xmlItems = dishes;
   }
-
 }
 
