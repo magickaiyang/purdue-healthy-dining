@@ -13,9 +13,11 @@ export class MenuPage {
   mealTime: string;
   meals: any;
   savedData: any;
+  savedMeal: any;
 
   constructor(private http: HttpClient) {
     this.today = Date.now();
+    this.savedMeal={Stations:[{Items:[]}]};  //placeholder
   }
 
   itemSelected(item: string) {
@@ -77,6 +79,7 @@ export class MenuPage {
 
       if (meal.Name != this.mealTime) //only display relevant dishes
         continue;
+      this.savedMeal=meal;
 
       for (j in meal.Stations) {
         var station = meal.Stations[j];

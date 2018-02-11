@@ -25,9 +25,10 @@
       </ion-option>
     </ion-select>
   </ion-item>
-  <ion-list>
-    <button ion-item *ngFor="let item of xmlItems" (click)="itemSelected(item)">
-      {{ item.name }}
+  <ion-list *ngFor="let station of savedMeal.Stations">
+    <ion-list-header>{{station.Name}}</ion-list-header>
+    <button ion-item *ngFor="let item of station.Items" (click)="itemSelected(item)">
+      {{ item.Name }}
     </button>
   </ion-list>
 </ion-content>
