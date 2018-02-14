@@ -1,10 +1,15 @@
 import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {NavController} from 'ionic-angular';
+import {CaloryCalculationPage} from '../calory-calculation/calory-calculation';
+
 
 @Component({
   selector: 'page-menu',
   templateUrl: 'menu.html'
 })
+
+
 export class MenuPage {
   today: any;
   diningcourt: string;
@@ -12,15 +17,27 @@ export class MenuPage {
   meals: any;
   savedData: any;
   savedMeal: any;
-  public selectedID: any;
+  selectedID: any;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public navCtrl: NavController ) {
     this.today = Date.now();
     this.savedMeal={Stations:[{Items:[]}]};  //placeholder
     this.selectedID=[];
   }
 
+  openCaloryCalculation() {
+
+    let data = {
+      title: this.selectedID
+    }
+    this.navCtrl.push(CaloryCalculationPage, data);
+
+  }
+
+  /************************************************************************************************************/
+
   itemSelected(item) {
+
     this.selectedID.push({name:item.Name,id:item.ID});
     console.log(this.selectedID);
   }

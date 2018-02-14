@@ -5,18 +5,22 @@ import {MyApp} from './app.component';
 
 import {HomePage} from '../pages/home/home';
 import {TabsPage} from '../pages/tabs/tabs';
-import {MenuPage} from "../pages/menu/menu";
+import {MenuPage} from '../pages/menu/menu';
+import {CaloryCalculationPage} from '../pages/calory-calculation/calory-calculation';
 import {HttpClientModule} from '@angular/common/http';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
+
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     TabsPage,
-    MenuPage
+    MenuPage,
+    CaloryCalculationPage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,8 @@ import {SplashScreen} from '@ionic-native/splash-screen';
     MyApp,
     HomePage,
     TabsPage,
-    MenuPage
+    MenuPage,
+    CaloryCalculationPage
   ],
   providers: [
     StatusBar,
