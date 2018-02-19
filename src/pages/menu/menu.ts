@@ -50,18 +50,14 @@ export class MenuPage {
     this.http.get(url)
       .subscribe((data) => {
           this.parseXML(data)
-            .then(() => {
-              this.onSelectMeal();
-            })
         }
       );
   }
 
   parseXML(data) {
-    return new Promise(resolve => {
       this.savedData = data;  //save data to process after a meal time has been selected
 
-      var i, dishes = [];
+      var i;
       for (i in data.Meals) {  //get list of meal times
         var meal = data.Meals[i];
         this.meals.push({name: meal.Name});
@@ -71,11 +67,13 @@ export class MenuPage {
         this.mealTime="";
       else
         this.mealTime = this.meals[0].name;  //set default meal time to the first available
-    });
+
+      this.onSelectMeal();  //refresh dishes
   }
 
   onSelect() {
     this.savedMeal={Stations:[{Items:[]}]};  //clear the dish list when dining court is changed
+    this.meals=[];  //clears meal times
     this.loadXML();
   }
 
