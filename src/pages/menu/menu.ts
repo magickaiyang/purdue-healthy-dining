@@ -21,20 +21,30 @@ export class MenuPage {
   constructor(private http: HttpClient, public navCtrl: NavController ) {
     this.today = Date.now();
     this.savedMeal={Stations:[{Items:[]}]};  //placeholder
-    this.selectedID=[];
     this.meals=[];
   }
 
   openCaloryCalculation() {
+    let selectedID=[];
+    let j,k;
+    for (j in this.savedMeal.Stations) {
+      let station=this.savedMeal.Stations[j];
+      for (k in station.Items) {
+        let dish=station.Items[k];
+        if(dish.Selected==true) {
+          selectedID.push({name:dish.Name,id:dish.ID});
+        }
+      }
+    }
     let data = {
-      title: this.selectedID
+      title: selectedID
     };
+    console.log(data);
     this.navCtrl.push(CaloryCalculationPage, data);
   }
 
   itemSelected(item) {
-    this.selectedID.push({name:item.Name,id:item.ID});
-    console.log(this.selectedID);
+    item.Selected=!item.Selected;
   }
 
   loadXML() {
@@ -45,7 +55,6 @@ export class MenuPage {
     url += this.diningcourt;
     url += '/';
     url += dateFormatted;
-    //console.log(url);
 
     this.http.get(url)
       .subscribe((data) => {
@@ -88,6 +97,14 @@ export class MenuPage {
         break;
       }
     }
+
+    let j,k;
+    for (j in this.savedMeal.Stations) {
+      let station=this.savedMeal.Stations[j];
+      for (k in station.Items) {
+        let dish=station.Items[k];
+        dish.Selected=false;
+      }
+    }
   }
 }
-

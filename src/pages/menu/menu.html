@@ -1,11 +1,14 @@
 <ion-header>
+
   <ion-navbar>
     <ion-title>Menu</ion-title>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content>
   <p id="date">Date: {{today | date: 'yyyy-MM-dd' }}</p>
+
   <ion-item>
     <ion-label>Dining Court</ion-label>
     <ion-select [(ngModel)]="diningcourt" (ionChange)="onSelect()">
@@ -17,6 +20,7 @@
       <ion-option value="The Gathering Place">The Gathering Place</ion-option>
     </ion-select>
   </ion-item>
+
   <ion-item>
     <ion-label>Meal Time</ion-label>
     <ion-select [(ngModel)]="mealTime" (ionChange)="onSelectMeal()">
@@ -25,11 +29,20 @@
       </ion-option>
     </ion-select>
   </ion-item>
+
   <ion-list *ngFor="let station of savedMeal.Stations">
     <ion-list-header>{{station.Name}}</ion-list-header>
-    <button ion-item *ngFor="let item of station.Items" (click)="itemSelected(item)">
-      {{ item.Name }}
-    </button>
+
+    <div *ngFor="let item of station.Items">
+      <button ion-item *ngIf="item.Selected" color="danger" (click)="itemSelected(item)">
+        {{ item.Name }}
+      </button>
+      <button ion-item *ngIf="!item.Selected" (click)="itemSelected(item)">
+        {{ item.Name }}
+      </button>
+    </div>
+
   </ion-list>
+
   <button ion-button full color="light" (click)="openCaloryCalculation()">Calory Calculation</button>
 </ion-content>
