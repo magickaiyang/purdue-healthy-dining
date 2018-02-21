@@ -12,20 +12,6 @@ An app that allows Purdue students to eat healthier in the dining courts. The ap
 
 ---
 
-### Updates
-02/03/2018: 
-1. Displays the date and gets today's menu.
-2. Able to choose dining courts.
-3. Shows dishes in all stations.
-
-02/10/2018:
-1. Dynamic meal time selection. Shows only relevant dishes.
-2. Group dishes by station.
-3. More robust code (when no meals are served).
-4. onClick() adds the dish {name,id} to the array.
-
----
-
 ### TODOs
 1. Find nutrition data for dishes (DONE)
 2. Get debugging ready on iOS plaftorm
