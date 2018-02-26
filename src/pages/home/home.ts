@@ -11,4 +11,11 @@ export class HomePage {
 
   }
 
+  suggest() {
+
+  }
+
+  choose() {
+    this.navCtrl.parent.select(1);
+  }
 }

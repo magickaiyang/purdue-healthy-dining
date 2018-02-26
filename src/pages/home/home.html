@@ -5,12 +5,14 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Purdue Healthy Dining!</h2>
-  <p>
-    This is a demonstration of Purdue Healthy Dining using Ionic(based on Cordova) for cross-platform development framework.
+  <img src="assets/imgs/homescreen.png" class="center">
+  <p style="text-align:center">
+    Click one of the two buttons to begin!
   </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <button ion-button block (click)="suggest()">
+    Suggest a meal
+  </button>
+  <button ion-button block (click)="choose()">
+    Choose your own meal
+  </button>
 </ion-content>
