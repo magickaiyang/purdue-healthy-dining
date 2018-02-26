@@ -1,25 +1,21 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
 
-/**
- * Generated class for the SettingsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
   selector: 'page-settings',
   templateUrl: 'settings.html',
 })
 export class SettingsPage {
 
+  allergy_peanut: boolean;
+  allergy_egg: boolean;
+  low_carb: boolean;
+  vegetarian: boolean;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.allergy_peanut=true;
+    this.allergy_egg=false;
+    this.low_carb=false;
+    this.vegetarian=true;
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsPage');
-  }
-
 }
