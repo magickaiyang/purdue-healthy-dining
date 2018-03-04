@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>CalorieCalculation</ion-title>
+    <ion-title>CaloryCalculation</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,25 +15,25 @@
 
 <ion-content padding>
 
-	<ion-list>
-        <ion-item *ngFor="let x of showList">
-        {{x.name}}
+  <ion-list>
+    <ion-item *ngFor="let x of showList">
+      {{x.name}}
 
-        <button ion-button outline item-end icon-right (click)="add(x)">
-          +
-        </button>
+      <button ion-button outline item-end icon-right (click)="add(x)">
+        +
+      </button>
 
-        <button ion-button outline item-end icon-right (click)="minus(x)">
-          -
-        </button>
+      <button ion-button outline item-end icon-right (click)="minus(x)">
+        -
+      </button>
 
-        <span item-end>
+      <span item-end>
           {{x.count}}
         </span>
-      
-        </ion-item>
+
+    </ion-item>
   </ion-list>
 
-  <p>Total Calories: {{sumCalory}}</p>
+  <p>Total Calory: {{sumCaloryString}}</p>
 
 </ion-content>

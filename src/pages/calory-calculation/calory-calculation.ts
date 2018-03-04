@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { AlertController } from 'ionic-angular';
 
 
 /**
@@ -19,52 +20,80 @@ import { HttpClient } from '@angular/common/http';
 
 export class CaloryCalculationPage {
 
-    itemSelected: any;
-    showList : any;
-    savedData: any;
-    sumCalory: any;
+  itemSelected: any;
+  showList : any;
+  savedData: any;
+  sumCalory: any;
+  sumCaloryString: string;
+  noInfo: any;
+  hasBadInfo: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public alertCtrl: AlertController) {
 
-  	this.itemSelected = this.navParams.get('title');
-  	this.showList = [];
-  	for (let entry of this.itemSelected){
-  		this.showList.push({name: entry.name, count: 0, calory: 0, id: entry.id});
-  	}
-    this.sumCalory = 0;
-  	
+    this.itemSelected = this.navParams.get('title');
+    this.showList = [];
+    this.noInfo = [];
+    for (let entry of this.itemSelected){
+      this.showList.push({name: entry.name, count: 0.00, calory: 0.00, id: entry.id});
+    }
+    this.sumCalory = 0.00;
+    this.sumCaloryString = '0.00Cal'
+    this.hasBadInfo = false;
+
   }
+
 
   add(x){
     x.count+=1;
     this.sumCalory+=x.calory;
+    this.sumCaloryString = this.sumCalory.toFixed(2) + 'Cal';
   }
 
   minus(x){
-    x.count-=1;
-    this.sumCalory-=x.calory;
+    if(x.count>0){
+      x.count-=1;
+      this.sumCalory-=x.calory;
+      this.sumCaloryString = this.sumCalory.toFixed(2) + 'Cal';
+    }
   }
 
+  showAlert() {
+    let string1: string = "";
+    let count = 1;
+    for (let i of this.noInfo){
+      string1 += count + '. ';
+      string1 += i;
+      string1 += '<br/>';
+      count++;
+    }
+    let alert = this.alertCtrl.create({
 
-  caloryCalculation(){
-    this.loadXML();
-
+      title: 'We cannot find Calory information for the following items:',
+      subTitle: string1,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   ionViewWillEnter(){
-    this.caloryCalculation();
+    this.loadXML();
+
+  }
+  ionViewDidEnter(){
+    if (this.hasBadInfo){
+      this.showAlert();
+    }
   }
 
-  
+
 
   loadXML() {
-    
+
     for (let entry of this.showList){
       let url = 'https://api.hfs.purdue.edu/menus/v2/items/';
       url += entry.id;
-    
-      console.log(url);
-    //console.log(url);
+
+      //console.log(url);
 
       this.http.get(url)
         .subscribe((data) => {
@@ -76,19 +105,33 @@ export class CaloryCalculationPage {
   }
 
   parseXML(data, entry) {
-    
-      this.savedData = data;  //save data to process after a meal time has been selected
 
-      var i, calory;
-      console.log(this.savedData);
+    this.savedData = data;  //save data to process after a meal time has been selected
+
+    var i, calory;
+    //console.log(this.savedData);
+    try{
       entry.calory = this.savedData.Nutrition[1].Value;
-      //console.log(this.sumCalory);
+      //console.log(this.showList);
+    }
+    catch(e){
+      this.noInfo.push(entry.name);
+      const index: number = this.showList.indexOf(entry);
+      if (index !== -1) {
+        this.showList.splice(index, 1);
+      }
+      this.hasBadInfo = true;
+      console.log(this.hasBadInfo);
+      //console.log(this.showList);
+      //console.log(this.noInfo);
+    }
+    //console.log(this.sumCalory);
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CaloryCalculationPage');
-    
+
   }
 
 }
