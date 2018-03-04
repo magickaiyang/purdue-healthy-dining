@@ -29,10 +29,20 @@ export class CaloryCalculationPage {
   	this.itemSelected = this.navParams.get('title');
   	this.showList = [];
   	for (let entry of this.itemSelected){
-  		this.showList.push(entry.name);
+  		this.showList.push({name: entry.name, count: 0, calory: 0, id: entry.id});
   	}
     this.sumCalory = 0;
   	
+  }
+
+  add(x){
+    x.count+=1;
+    this.sumCalory+=x.calory;
+  }
+
+  minus(x){
+    x.count-=1;
+    this.sumCalory-=x.calory;
   }
 
 
@@ -49,7 +59,7 @@ export class CaloryCalculationPage {
 
   loadXML() {
     
-    for (let entry of this.itemSelected){
+    for (let entry of this.showList){
       let url = 'https://api.hfs.purdue.edu/menus/v2/items/';
       url += entry.id;
     
@@ -58,23 +68,21 @@ export class CaloryCalculationPage {
 
       this.http.get(url)
         .subscribe((data) => {
-            this.parseXML(data)
+            this.parseXML(data, entry)
           }
         );
 
     }
   }
 
-  parseXML(data) {
+  parseXML(data, entry) {
     
       this.savedData = data;  //save data to process after a meal time has been selected
 
       var i, calory;
       console.log(this.savedData);
-      calory = this.savedData.Nutrition[1].Value;
-
-      this.sumCalory+= calory;
-      console.log(this.sumCalory);
+      entry.calory = this.savedData.Nutrition[1].Value;
+      //console.log(this.sumCalory);
 
   }
 

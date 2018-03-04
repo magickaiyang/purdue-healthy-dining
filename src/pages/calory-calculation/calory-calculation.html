@@ -16,7 +16,22 @@
 <ion-content padding>
 
 	<ion-list>
-        <ion-item *ngFor="let x of showList">{{x}}</ion-item>
+        <ion-item *ngFor="let x of showList">
+        {{x.name}}
+
+        <button ion-button outline item-end icon-right (click)="add(x)">
+          +
+        </button>
+
+        <button ion-button outline item-end icon-right (click)="minus(x)">
+          -
+        </button>
+
+        <span item-end>
+          {{x.count}}
+        </span>
+      
+        </ion-item>
   </ion-list>
 
   <p>Total Calories: {{sumCalory}}</p>
