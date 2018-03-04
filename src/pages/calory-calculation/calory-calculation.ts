@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from 'ionic-angular';
-
 
 /**
  * Generated class for the CaloryCalculationPage page.
@@ -11,7 +10,6 @@ import { AlertController } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-calory-calculation',
   templateUrl: 'calory-calculation.html',
@@ -28,7 +26,7 @@ export class CaloryCalculationPage {
   noInfo: any;
   hasBadInfo: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public alertCtrl: AlertController) {
+  constructor(private navParams: NavParams, private http: HttpClient, private alertCtrl: AlertController) {
 
     this.itemSelected = this.navParams.get('title');
     this.showList = [];
@@ -37,7 +35,7 @@ export class CaloryCalculationPage {
       this.showList.push({name: entry.name, count: 0.00, calory: 0.00, id: entry.id});
     }
     this.sumCalory = 0.00;
-    this.sumCaloryString = '0.00Cal'
+    this.sumCaloryString = '0.00Cal';
     this.hasBadInfo = false;
 
   }
@@ -108,7 +106,6 @@ export class CaloryCalculationPage {
 
     this.savedData = data;  //save data to process after a meal time has been selected
 
-    var i, calory;
     //console.log(this.savedData);
     try{
       entry.calory = this.savedData.Nutrition[1].Value;

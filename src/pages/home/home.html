@@ -7,8 +7,28 @@
 <ion-content padding>
   <img src="assets/imgs/homescreen.png" class="center">
   <p style="text-align:center">
-    Click one of the two buttons to begin!
+    Select dining court, meal time and click one of the two buttons to begin!
   </p>
+  <p id="date">Date: {{today | date: 'yyyy-MM-dd' }}</p>
+  <ion-item>
+    <ion-label>Dining Court</ion-label>
+    <ion-select [(ngModel)]="diningcourt" (ionChange)="onSelect()">
+      <ion-option value="Earhart">Earhart</ion-option>
+      <ion-option value="Ford">Ford</ion-option>
+      <ion-option value="Wiley">Wiley</ion-option>
+      <ion-option value="Hillenbrand">Hillenbrand</ion-option>
+      <ion-option value="Windsor">Windsor</ion-option>
+      <ion-option value="The Gathering Place">The Gathering Place</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Meal Time</ion-label>
+    <ion-select [(ngModel)]="mealTime" (ionChange)="onSelectMeal()">
+      <ion-option *ngFor="let mt of meals" [value]="mt.name">
+        {{mt.name}}
+      </ion-option>
+    </ion-select>
+  </ion-item>
   <button ion-button block (click)="suggest()">
     Suggest a meal
   </button>
