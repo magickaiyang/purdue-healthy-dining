@@ -12,22 +12,22 @@
     </ion-list-header>
     <ion-item>
       <ion-label>Low-carb</ion-label>
-      <ion-toggle color="royal" [(ngModel)]="low_carb"></ion-toggle>
+      <ion-toggle color="royal" [(ngModel)]="low_carb" (ionChange)="update_low()"></ion-toggle>
     </ion-item>
     <ion-item>
       <ion-label>Vegetarian</ion-label>
-      <ion-toggle color="energized" [(ngModel)]="vegetarian"></ion-toggle>
+      <ion-toggle color="energized" [(ngModel)]="vegetarian" (ionChange)="update_vegetarian()"></ion-toggle>
     </ion-item>
     <ion-list-header>
       Allergies
     </ion-list-header>
     <ion-item>
       <ion-label>Peanut</ion-label>
-      <ion-checkbox [(ngModel)]="allergy_peanut"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="allergy_peanut" (ionChange)="update_peanut()"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label>Egg</ion-label>
-      <ion-checkbox [(ngModel)]="allergy_egg"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="allergy_egg" (ionChange)="update_egg()"></ion-checkbox>
     </ion-item>
   </ion-list>
 </ion-content>

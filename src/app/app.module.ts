@@ -2,6 +2,7 @@ import {NgModule, ErrorHandler} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {MyApp} from './app.component';
+import {IonicStorageModule} from '@ionic/storage';
 
 import {HomePage} from '../pages/home/home';
 import {MenuPage} from '../pages/menu/menu';
@@ -25,7 +26,8 @@ import {SettingsPage} from "../pages/settings/settings";
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

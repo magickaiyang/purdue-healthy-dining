@@ -17,7 +17,7 @@ export class HomePage {
   savedData: any; //all data pertaining to the current dining court
   public savedMeal: any; //all dishes pertaining tho the current selection
 
-  constructor(private http: HttpClient, public navCtrl: NavController) {
+  constructor(private http: HttpClient, private navCtrl: NavController) {
     this.today = Date.now();
     this.savedMeal={Stations:[{Items:[]}]};  //placeholder
     this.meals=[];
