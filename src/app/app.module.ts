@@ -4,7 +4,6 @@ import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {MyApp} from './app.component';
 
 import {HomePage} from '../pages/home/home';
-import {TabsPage} from '../pages/tabs/tabs';
 import {MenuPage} from '../pages/menu/menu';
 import {CaloryCalculationPage} from '../pages/calory-calculation/calory-calculation';
 import {HttpClientModule} from '@angular/common/http';
@@ -19,7 +18,6 @@ import {SettingsPage} from "../pages/settings/settings";
   declarations: [
     MyApp,
     HomePage,
-    TabsPage,
     MenuPage,
     CaloryCalculationPage,
     SettingsPage
@@ -33,7 +31,6 @@ import {SettingsPage} from "../pages/settings/settings";
   entryComponents: [
     MyApp,
     HomePage,
-    TabsPage,
     MenuPage,
     CaloryCalculationPage,
     SettingsPage

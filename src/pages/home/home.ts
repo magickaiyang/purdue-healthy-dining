@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {HttpClient} from '@angular/common/http';
 import {MenuPage} from "../menu/menu";
+import {SettingsPage} from "../settings/settings";
 
 @Component({
   selector: 'page-home',
@@ -20,6 +21,10 @@ export class HomePage {
     this.today = Date.now();
     this.savedMeal={Stations:[{Items:[]}]};  //placeholder
     this.meals=[];
+  }
+
+  settings() {
+    this.navCtrl.push(SettingsPage);
   }
 
   suggest() {
