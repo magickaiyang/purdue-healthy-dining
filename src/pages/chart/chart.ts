@@ -1,13 +1,11 @@
-import { Component, OnInit, ApplicationRef } from '@angular/core';
-import { NavController, TabButton } from 'ionic-angular';
-import Chart from 'chart.js';
-import { HomePage } from '../home/home';
+import {Component, OnInit} from '@angular/core';
+import {NavController} from 'ionic-angular';
+import {Chart} from 'chart.js';
 
 
 @Component({
      selector: 'page-chart',
      templateUrl: 'chart.html'
-     //templateUrl: './chart.component.html'
 })
 export class ChartPage implements OnInit {
 
@@ -16,7 +14,7 @@ export class ChartPage implements OnInit {
   }
 
   ngOnInit() {
-     //logging does not work when I save the menu page last 
+     //logging does not work when I save the menu page last
      //BARCHART
    var bar = document.getElementById("barChart");
    document.getElementById("barChart").onclick = function(evt){
@@ -28,7 +26,7 @@ export class ChartPage implements OnInit {
        alert(label + ": " + value);
        //window.location. = "../Info/info"
 
-       
+
      } catch (e){
          //don't do anything if bar not clicked
          alert('Please click on a valid bar. If the bar is too small, click on ' +
@@ -49,25 +47,17 @@ export class ChartPage implements OnInit {
       },
       options: {
         legend: { display: true },
-         
+
         title: {
           display: true,
           text: 'Nutrients in Aglarabaa'
-        }, 
+        },
         responsive: false,
-
-        layout: {
-          padding: {
-             top: 30,
-             x: 10,
-             y: 10
-          }
-        }
       }
      });
-      
 
-      
+
+
       //PIE CHART
      var pie = document.getElementById("pieChart");
      var pieChart = new Chart(pie, {
@@ -80,21 +70,16 @@ export class ChartPage implements OnInit {
             backgroundColor: ["#e145f6", "#f6e145","#f36a15","#9ef315","#15f3d9"],
             data: [150,300,200,110,300]
           }
-        ] 
+        ]
       },
       options: {
         //legend: { display: true },
-      
+
         title: {
           display: true,
           text: 'Nutrients in Aglarabaa'
-        }, 
-       responsive: false, 
-       layout: {
-         padding: {
-            top: 90
-         }
-       }
+        },
+       responsive: false,
       }
      });
 
@@ -110,26 +95,21 @@ export class ChartPage implements OnInit {
             backgroundColor: ["#e145f6", "#f6e145","#f36a15","#9ef315","#15f3d9"],
             data: [150,300,200,110,300]
           }
-        ] 
+        ]
       },
       options: {
         //legend: { display: true },
-      
+
         title: {
           display: true,
           text: 'Nutrients in Aglarabaa'
         },
-       //responsive: false, 
-       layout: {
-         padding: {
-            top: 90
-         }
-       }
+       //responsive: false,
       }
      });
 
 
-     //DONUT CHART 
+     //DONUT CHART
      var donut = document.getElementById("donutChart");
      var donutChart = new Chart(donut, {
       type: 'doughnut',
@@ -141,21 +121,16 @@ export class ChartPage implements OnInit {
             backgroundColor: ["#e145f6", "#f6e145","#f36a15","#9ef315","#15f3d9"],
             data: [150,300,200,110,300]
           }
-        ] 
+        ]
       },
       options: {
         //legend: { display: true },
-      
+
         title: {
           display: true,
           text: 'Nutrients in Aglarabaa'
         },
-       //responsive: false, 
-       layout: {
-         padding: {
-            top: 90
-         }
-       }
+       //responsive: false,
       }
      });
 
@@ -215,23 +190,18 @@ export class ChartPage implements OnInit {
       },
       options: {
         //legend: { display: true },
-      
+
         title: {
           display: true,
           text: 'Nutrients in Aglarabaa'
         },
-       //responsive: false, 
-       layout: {
-         padding: {
-           top: 60
-         }
-       }
+       //responsive: false,
       }
      });
 
   }
 
-  
+
 
 
 }

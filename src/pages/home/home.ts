@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import {HttpClient} from '@angular/common/http';
 import {MenuPage} from "../menu/menu";
 import {SettingsPage} from "../settings/settings";
+import {ChartPage} from "../chart/chart";
 
 @Component({
   selector: 'page-home',
@@ -93,5 +94,9 @@ export class HomePage {
         dish.Selected=false;
       }
     }
+  }
+
+  chart_demo() {
+    this.navCtrl.push(ChartPage);
   }
 }

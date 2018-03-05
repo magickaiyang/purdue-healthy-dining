@@ -12,6 +12,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {SettingsPage} from "../pages/settings/settings";
+import {ChartPage} from "../pages/chart/chart";
 
 
 
@@ -21,7 +22,8 @@ import {SettingsPage} from "../pages/settings/settings";
     HomePage,
     MenuPage,
     CaloryCalculationPage,
-    SettingsPage
+    SettingsPage,
+    ChartPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import {SettingsPage} from "../pages/settings/settings";
     HomePage,
     MenuPage,
     CaloryCalculationPage,
-    SettingsPage
+    SettingsPage,
+    ChartPage
   ],
   providers: [
     StatusBar,
