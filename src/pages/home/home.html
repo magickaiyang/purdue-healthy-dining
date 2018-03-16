@@ -9,7 +9,10 @@
   <p style="text-align:center">
     Select dining court, meal time and click one of the two buttons to begin!
   </p>
-  <p id="date">Date: {{today | date: 'yyyy-MM-dd' }}</p>
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="today" (ionChange)="onSelectDate()"></ion-datetime>
+  </ion-item>
   <ion-item>
     <ion-label>Dining Court</ion-label>
     <ion-select [(ngModel)]="diningcourt" (ionChange)="onSelect()">
