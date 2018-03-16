@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
 import {HttpClient} from '@angular/common/http';
 import {MenuPage} from "../menu/menu";
 import {SettingsPage} from "../settings/settings";
@@ -11,7 +11,7 @@ import {ChartPage} from "../chart/chart";
 })
 
 export class HomePage {
-  today: any;
+  today: string;
   diningcourt: string;  //dining court selection
   mealTime: string; //meal time selection
   meals: any; //meal times
@@ -19,9 +19,9 @@ export class HomePage {
   public savedMeal: any; //all dishes pertaining tho the current selection
 
   constructor(private http: HttpClient, private navCtrl: NavController) {
-    this.today = Date.now();
-    this.savedMeal={Stations:[{Items:[]}]};  //placeholder
-    this.meals=[];
+    this.savedMeal = {Stations: [{Items: []}]};  //placeholder
+    this.meals = [];
+    this.today = new Date().toISOString();
   }
 
   settings() {
@@ -29,22 +29,20 @@ export class HomePage {
   }
 
   suggest() {
-
   }
 
   choose() {
-    let data={savedMeal:this.savedMeal};
-    this.navCtrl.push(MenuPage,data);
+    let data = {savedMeal: this.savedMeal};
+    this.navCtrl.push(MenuPage, data);
   }
 
   loadXML() {
-    var dateFormatted = document.getElementById("date").innerText;
-    dateFormatted = dateFormatted.substr(6, 10);
-
     var url = 'https://api.hfs.purdue.edu/menus/v2/locations/';
     url += this.diningcourt;
     url += '/';
-    url += dateFormatted;
+    url += this.today;
+
+    console.log(url);
 
     this.http.get(url)
       .subscribe((data) => {
@@ -63,7 +61,7 @@ export class HomePage {
     }
 
     if (!this.meals[0])
-      this.mealTime="";
+      this.mealTime = "";
     else
       this.mealTime = this.meals[0].name;  //set default meal time to the first available
 
@@ -71,9 +69,13 @@ export class HomePage {
   }
 
   onSelect() {
-    this.savedMeal={Stations:[{Items:[]}]};  //clear the dish list when dining court is changed
-    this.meals=[];  //clears meal times
+    this.savedMeal = {Stations: [{Items: []}]};  //clear the dish list when dining court is changed
+    this.meals = [];  //clears meal times
     this.loadXML();
+  }
+
+  onSelectDate() {
+    this.onSelect();
   }
 
   onSelectMeal() {
@@ -86,12 +88,12 @@ export class HomePage {
       }
     }
 
-    let j,k;
+    let j, k;
     for (j in this.savedMeal.Stations) {
-      let station=this.savedMeal.Stations[j];
+      let station = this.savedMeal.Stations[j];
       for (k in station.Items) {
-        let dish=station.Items[k];
-        dish.Selected=false;
+        let dish = station.Items[k];
+        dish.Selected = false;
       }
     }
   }
