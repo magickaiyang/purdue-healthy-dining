@@ -40,9 +40,7 @@ export class HomePage {
     var url = 'https://api.hfs.purdue.edu/menus/v2/locations/';
     url += this.diningcourt;
     url += '/';
-    url += this.today;
-
-    console.log(url);
+    url += this.today.substr(0,10);
 
     this.http.get(url)
       .subscribe((data) => {
