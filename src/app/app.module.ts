@@ -13,6 +13,7 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {SettingsPage} from "../pages/settings/settings";
 import {ChartPage} from "../pages/chart/chart";
+import {SuggestPage} from "../pages/suggest/suggest";
 
 
 
@@ -23,7 +24,8 @@ import {ChartPage} from "../pages/chart/chart";
     MenuPage,
     CaloryCalculationPage,
     SettingsPage,
-    ChartPage
+    ChartPage,
+    SuggestPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import {ChartPage} from "../pages/chart/chart";
     MenuPage,
     CaloryCalculationPage,
     SettingsPage,
-    ChartPage
+    ChartPage,
+    SuggestPage
   ],
   providers: [
     StatusBar,

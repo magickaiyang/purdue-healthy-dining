@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {MenuPage} from "../menu/menu";
 import {SettingsPage} from "../settings/settings";
 import {ChartPage} from "../chart/chart";
+import {SuggestPage} from "../suggest/suggest";
 
 @Component({
   selector: 'page-home',
@@ -29,6 +30,7 @@ export class HomePage {
   }
 
   suggest() {
+    this.navCtrl.push(SuggestPage);
   }
 
   choose() {
