@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from 'ionic-angular';
+import { GlobalProvider } from '../../providers/global/global';
+import { OnInit } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { Chart } from 'chart.js';
 
 /**
  * Generated class for the CaloryCalculationPage page.
@@ -16,7 +20,7 @@ import { AlertController } from 'ionic-angular';
 })
 
 
-export class CaloryCalculationPage {
+export class CaloryCalculationPage implements OnInit{
 
   itemSelected: any;
   showList : any;
@@ -25,8 +29,11 @@ export class CaloryCalculationPage {
   sumCaloryString: string;
   noInfo: any;
   hasBadInfo: boolean;
+  totalCaloryOneDay: number; 
+  totalCaloryOneDayString: string;
+  caloryPercentage: string;
 
-  constructor(private navParams: NavParams, private http: HttpClient, private alertCtrl: AlertController) {
+  constructor(private navParams: NavParams, private http: HttpClient, private alertCtrl: AlertController, public global: GlobalProvider) {
 
     this.itemSelected = this.navParams.get('title');
     this.showList = [];
@@ -37,7 +44,50 @@ export class CaloryCalculationPage {
     this.sumCalory = 0.00;
     this.sumCaloryString = '0.00Cal';
     this.hasBadInfo = false;
+    this.calculateCaloryOneDay();
+    this.caloryPercentage = "0.00%";
+    
+  }
 
+  ngOnInit() {
+       //PIE CHART
+     var pie = document.getElementById("pieChart");
+     var pieChart = new Chart(pie, {
+      type: 'pie',
+      data: {
+        labels: ["Calories intake for this meal", "Calories you still can intake today"],
+        datasets: [
+          {
+            label: "Milligrams",
+            backgroundColor: ["#9ef315","#15f3d9"],
+            data: [this.sumCalory, this.totalCaloryOneDay-this.sumCalory]
+          }
+        ]
+      },
+      options: {
+        //legend: { display: true },
+
+        title: {
+          display: true,
+          text: 'Calory Pie Chart'
+        },
+       responsive: false,
+      }
+     });
+  }
+
+  calculateCaloryOneDay(){
+    if (this.global.userGender === "Male"){
+      this.totalCaloryOneDay = (10*this.global.userWeight+6.25*this.global.userHeight-5*this.global.userAge-5)*1.4;
+      this.totalCaloryOneDayString = this.totalCaloryOneDay.toFixed(2) + 'Cal';
+    }
+    else if(this.global.userGender === "Female"){
+      this.totalCaloryOneDay = (10*this.global.userWeight+6.25*this.global.userHeight-5*this.global.userAge-161)*1.4;
+      this.totalCaloryOneDayString = this.totalCaloryOneDay.toFixed(2) + 'Cal';
+    }
+    else{
+      console.log(this.global.userGender);
+    }
   }
 
 
@@ -45,6 +95,7 @@ export class CaloryCalculationPage {
     x.count+=1;
     this.sumCalory+=x.calory;
     this.sumCaloryString = this.sumCalory.toFixed(2) + 'Cal';
+    this.caloryPercentage = (this.sumCalory/this.totalCaloryOneDay * 100).toFixed(2) + '%';
   }
 
   minus(x){
@@ -52,6 +103,7 @@ export class CaloryCalculationPage {
       x.count-=1;
       this.sumCalory-=x.calory;
       this.sumCaloryString = this.sumCalory.toFixed(2) + 'Cal';
+      this.caloryPercentage = (this.sumCalory/this.totalCaloryOneDay * 100).toFixed(2) + '%';
     }
   }
 
