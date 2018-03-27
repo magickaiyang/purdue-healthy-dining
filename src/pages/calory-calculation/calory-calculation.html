@@ -29,11 +29,18 @@
 
       <span item-end>
           {{x.count}}
-        </span>
+      </span>
 
     </ion-item>
   </ion-list>
 
+
   <p>Total Calories: {{sumCaloryString}}</p>
+  <p>Calories you need one day: {{totalCaloryOneDayString}}</p>
+  <p>"%" Calories you will intake today for this meal: {{caloryPercentage}}</p>
+  
+  <div align="center" class="ex1">
+    <canvas id="pieChart" width="400" height="450"></canvas>
+  </div>
 
 </ion-content>

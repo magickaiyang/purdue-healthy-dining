@@ -4,6 +4,7 @@ import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {MyApp} from './app.component';
 import {IonicStorageModule} from '@ionic/storage';
 
+
 import {HomePage} from '../pages/home/home';
 import {MenuPage} from '../pages/menu/menu';
 import {CaloryCalculationPage} from '../pages/calory-calculation/calory-calculation';
@@ -14,8 +15,7 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {SettingsPage} from "../pages/settings/settings";
 import {ChartPage} from "../pages/chart/chart";
 import {SuggestPage} from "../pages/suggest/suggest";
-
-
+import { GlobalProvider } from '../providers/global/global';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,8 @@ import {SuggestPage} from "../pages/suggest/suggest";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GlobalProvider
   ]
 })
 export class AppModule {

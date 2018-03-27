@@ -28,5 +28,34 @@
       <ion-label>Egg</ion-label>
       <ion-checkbox [(ngModel)]="allergy_egg" (ionChange)="update_egg()"></ion-checkbox>
     </ion-item>
+
+    <ion-list-header>
+      Personal Information
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label floating>Gender</ion-label>
+      <ion-select [(ngModel)]="gender" (ionChange)="onSelectGender()">
+        <ion-option value="Male">Male</ion-option>
+        <ion-option value="Female">Female</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Weight(kg)</ion-label>
+      <ion-input type="text" [(ngModel)]="weight" (ionChange)="update_weight()"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Height(cm)</ion-label>
+      <ion-input type="text" [(ngModel)]="height" (ionChange)="update_height()"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Age</ion-label>
+      <ion-input type="text" [(ngModel)]="age" (ionChange)="update_age()"></ion-input>
+    </ion-item>
+
+
   </ion-list>
 </ion-content>
