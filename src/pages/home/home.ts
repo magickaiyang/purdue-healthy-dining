@@ -22,7 +22,7 @@ export class HomePage {
   constructor(private http: HttpClient, private navCtrl: NavController) {
     this.savedMeal = {Stations: [{Items: []}]};  //placeholder
     this.meals = [];
-    this.today = new Date().toISOString();
+    this.today = new Date(new Date().toLocaleDateString()).toISOString();
   }
 
   settings() {
