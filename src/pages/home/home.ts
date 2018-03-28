@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {MenuPage} from "../menu/menu";
 import {SettingsPage} from "../settings/settings";
 import {ChartPage} from "../chart/chart";
+import {SuggestPage} from "../suggest/suggest";
 
 @Component({
   selector: 'page-home',
@@ -16,7 +17,7 @@ export class HomePage {
   mealTime: string; //meal time selection
   meals: any; //meal times
   savedData: any; //all data pertaining to the current dining court
-  public savedMeal: any; //all dishes pertaining tho the current selection
+  savedMeal: any; //all dishes pertaining tho the current selection
 
   constructor(private http: HttpClient, private navCtrl: NavController) {
     this.savedMeal = {Stations: [{Items: []}]};  //placeholder
@@ -29,6 +30,10 @@ export class HomePage {
   }
 
   suggest() {
+    let data={
+      savedMeal: this.savedMeal
+    };
+    this.navCtrl.push(SuggestPage,data);
   }
 
   choose() {

@@ -14,9 +14,8 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {SettingsPage} from "../pages/settings/settings";
 import {ChartPage} from "../pages/chart/chart";
+import {SuggestPage} from "../pages/suggest/suggest";
 import { GlobalProvider } from '../providers/global/global';
-
-
 
 @NgModule({
   declarations: [
@@ -25,7 +24,8 @@ import { GlobalProvider } from '../providers/global/global';
     MenuPage,
     CaloryCalculationPage,
     SettingsPage,
-    ChartPage
+    ChartPage,
+    SuggestPage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +40,8 @@ import { GlobalProvider } from '../providers/global/global';
     MenuPage,
     CaloryCalculationPage,
     SettingsPage,
-    ChartPage
+    ChartPage,
+    SuggestPage
   ],
   providers: [
     StatusBar,
