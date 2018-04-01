@@ -3,7 +3,6 @@ import { NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
-import { OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Chart } from 'chart.js';
 
@@ -20,7 +19,7 @@ import { Chart } from 'chart.js';
 })
 
 
-export class CaloryCalculationPage implements OnInit{
+export class CaloryCalculationPage{
 
   itemSelected: any;
   showList : any;
@@ -32,6 +31,9 @@ export class CaloryCalculationPage implements OnInit{
   totalCaloryOneDay: number; 
   totalCaloryOneDayString: string;
   caloryPercentage: string;
+
+  //pie: any;
+  //pieChart: any
 
   constructor(private navParams: NavParams, private http: HttpClient, private alertCtrl: AlertController, public global: GlobalProvider) {
 
@@ -49,7 +51,7 @@ export class CaloryCalculationPage implements OnInit{
     
   }
 
-  ngOnInit() {
+  createPieChart() {
        //PIE CHART
      var pie = document.getElementById("pieChart");
      var pieChart = new Chart(pie, {
@@ -71,7 +73,7 @@ export class CaloryCalculationPage implements OnInit{
           display: true,
           text: 'Calory Pie Chart'
         },
-       responsive: false,
+       responsive: true,
       }
      });
   }
@@ -96,6 +98,7 @@ export class CaloryCalculationPage implements OnInit{
     this.sumCalory+=x.calory;
     this.sumCaloryString = this.sumCalory.toFixed(2) + 'Cal';
     this.caloryPercentage = (this.sumCalory/this.totalCaloryOneDay * 100).toFixed(2) + '%';
+    this.createPieChart();
   }
 
   minus(x){
@@ -104,6 +107,7 @@ export class CaloryCalculationPage implements OnInit{
       this.sumCalory-=x.calory;
       this.sumCaloryString = this.sumCalory.toFixed(2) + 'Cal';
       this.caloryPercentage = (this.sumCalory/this.totalCaloryOneDay * 100).toFixed(2) + '%';
+      this.createPieChart();
     }
   }
 
@@ -135,6 +139,8 @@ export class CaloryCalculationPage implements OnInit{
     if (this.hasBadInfo){
       this.showAlert();
     }
+
+    this.createPieChart();
   }
 
 
