@@ -5,10 +5,26 @@
 </ion-header>
 
 <ion-content>
-  <ion-list-header>It is recommended that you have the following dishes:</ion-list-header>
-  <ion-list *ngFor="let dish of dishes">
-    <button ion-item *ngIf="dish.selected">
-      {{ dish.name }}
-    </button>
-  </ion-list>
+  <p>It is recommended that you have the following dishes:</p>
+
+  <p>For energy:</p>
+  <button ion-item *ngIf="dishes[foodSelections[0]]!==undefined">
+    {{dishes[foodSelections[0]].name}}
+  </button>
+
+  <p>For carbonhydrates:</p>
+  <button ion-item *ngIf="dishes[foodSelections[1]]!==undefined">
+    {{dishes[foodSelections[1]].name}}
+  </button>
+
+  <p>For protein:</p>
+  <button ion-item *ngIf="dishes[foodSelections[2]]!==undefined">
+    {{dishes[foodSelections[2]].name}}
+  </button>
+
+  <p>For dietary fiber:</p>
+  <button ion-item *ngIf="dishes[foodSelections[3]]!==undefined">
+    {{dishes[foodSelections[3]].name}}
+  </button>
+
 </ion-content>
