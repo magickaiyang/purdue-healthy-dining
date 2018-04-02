@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {Storage} from '@ionic/storage';
-import {CaloryCalculationPage} from '../calory-calculation/calory-calculation';
 import {GlobalProvider} from '../../providers/global/global';
 
 
@@ -70,6 +69,8 @@ export class SettingsPage {
       this.age = val;
     });
 
+    this.refreshGlobal();
+
   }
 
   onSelectGender(){
@@ -104,10 +105,14 @@ export class SettingsPage {
     this.storage.set("vegetarian",this.vegetarian);
   }
 
+  refreshGlobal() {
+    this.global.userGender = this.gender;
+    this.global.userWeight = this.weight;
+    this.global.userHeight = this.height;
+    this.global.userAge = this.age;
+  }
+
   ionViewWillLeave(){
-      this.global.userGender = this.gender;
-      this.global.userWeight = this.weight;
-      this.global.userHeight = this.height;
-      this.global.userAge = this.age;
+    this.refreshGlobal();
   }
 }

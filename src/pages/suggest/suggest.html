@@ -7,24 +7,40 @@
 <ion-content>
   <p>It is recommended that you have the following dishes:</p>
 
-  <p>For energy:</p>
-  <button ion-item *ngIf="dishes[foodSelections[0]]!==undefined">
-    {{dishes[foodSelections[0]].name}}
-  </button>
+  <ion-item>
+    <ion-label>For energy:</ion-label>
+    <ion-select [(ngModel)]="foodSelections[0]" (ionChange)="onSelectEnergy()">
+      <ion-option *ngFor="let choice of foodChoices[0]" [value]="choice">
+        {{dishes[choice].name}}
+      </ion-option>
+    </ion-select>
+  </ion-item>
 
-  <p>For carbonhydrates:</p>
-  <button ion-item *ngIf="dishes[foodSelections[1]]!==undefined">
-    {{dishes[foodSelections[1]].name}}
-  </button>
+  <ion-item>
+    <ion-label>For carbonhydrates:</ion-label>
+    <ion-select [(ngModel)]="foodSelections[1]" (ionChange)="onSelectCarb()">
+      <ion-option *ngFor="let choice of foodChoices[1]" [value]="choice">
+        {{dishes[choice].name}}
+      </ion-option>
+    </ion-select>
+  </ion-item>
 
-  <p>For protein:</p>
-  <button ion-item *ngIf="dishes[foodSelections[2]]!==undefined">
-    {{dishes[foodSelections[2]].name}}
-  </button>
+  <ion-item>
+    <ion-label>For protein:</ion-label>
+    <ion-select [(ngModel)]="foodSelections[2]" (ionChange)="onSelectProtein()">
+      <ion-option *ngFor="let choice of foodChoices[2]" [value]="choice">
+        {{dishes[choice].name}}
+      </ion-option>
+    </ion-select>
+  </ion-item>
 
-  <p>For dietary fiber:</p>
-  <button ion-item *ngIf="dishes[foodSelections[3]]!==undefined">
-    {{dishes[foodSelections[3]].name}}
-  </button>
+  <ion-item>
+    <ion-label>For dietary fiber:</ion-label>
+    <ion-select [(ngModel)]="foodSelections[3]" (ionChange)="onSelectFiber()">
+      <ion-option *ngFor="let choice of foodChoices[3]" [value]="choice">
+        {{dishes[choice].name}}
+      </ion-option>
+    </ion-select>
+  </ion-item>
 
 </ion-content>

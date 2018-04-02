@@ -15,6 +15,7 @@ export class SuggestPage {
   savedMeal: any; //original menu data
   dishes: any;  //reorganized from savedMeal
 
+
   constructor(private navParams: NavParams, private http: HttpClient) {
     this.arr = [];
     this.foodChoices = [];
@@ -189,4 +190,19 @@ export class SuggestPage {
     return a.value - b.value;
   }
 
+  onSelectEnergy() {
+    console.log(this.foodSelections[0]);
+  }
+
+  onSelectCarb() {
+
+  }
+
+  onSelectProtein() {
+
+  }
+
+  onSelectFiber() {
+
+  }
 }
