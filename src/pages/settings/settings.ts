@@ -1,6 +1,4 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
-import {Storage} from '@ionic/storage';
 import {GlobalProvider} from '../../providers/global/global';
 
 
@@ -15,104 +13,55 @@ export class SettingsPage {
   allergy_egg: boolean;
   low_carb: boolean;
   vegetarian: boolean;
-  gender: string;
-  weight: number;
-  height: number;
-  age: number;
+  userGender: string;
+  userWeight: number;
+  userHeight: number;
+  userAge: number;
 
-  constructor(private navCtrl: NavController, private storage: Storage, public global: GlobalProvider) {
-    console.log(storage.driver);
-
-    this.allergy_peanut=false;
-    this.allergy_egg=false;
-    this.low_carb=false;
-    this.vegetarian=false;
-    this.gender = "";
-    this.weight = 0;
-    this.height = 0;
-    this.age = 0;
-
-    storage.get('allergy_peanut').then((val) => {
-      if(val) {
-        this.allergy_peanut=val;
-      }
-    });
-    storage.get('allergy_egg').then((val) => {
-      if(val) {
-        this.allergy_egg=val;
-      }
-    });
-    storage.get('low_carb').then((val) => {
-      if(val) {
-        this.low_carb=val;
-      }
-    });
-    storage.get('vegetarian').then((val) => {
-      if(val) {
-        this.vegetarian=val;
-      }
-    });
-
-    storage.get('gender').then((val) => {
-      this.gender = val;
-    });
-
-    storage.get('weight').then((val) => {
-      this.weight = val;
-    });
-
-    storage.get('height').then((val) => {
-      this.height = val;
-    });
-
-     storage.get('age').then((val) => {
-      this.age = val;
-    });
-
-    this.refreshGlobal();
-
+  constructor(public global: GlobalProvider) {
+    this.allergy_peanut=this.global.allergy_peanut;
+    this.allergy_egg=this.global.allergy_egg;
+    this.low_carb=this.global.low_carb;
+    this.vegetarian=this.global.vegetarian;
+    this.userGender = this.global.userGender;
+    this.userWeight = this.global.userWeight;
+    this.userHeight = this.global.userHeight;
+    this.userAge = this.global.userAge;
   }
 
   onSelectGender(){
-    this.storage.set("gender", this.gender);
+    this.global.userGender=this.userGender;
   }
 
   update_weight(){
-    this.storage.set("weight" , this.weight);
+    this.global.userWeight=this.userWeight
   }
 
   update_height(){
-    this.storage.set("height" , this.height);
+    this.global.userHeight=this.userHeight;
   }
 
   update_age(){
-    this.storage.set("age" , this.age);
+    this.global.userAge=this.userAge;
   }
 
   update_peanut() {
-    this.storage.set("allergy_peanut",this.allergy_peanut);
+    this.global.allergy_peanut=this.allergy_peanut;
   }
 
   update_egg() {
-    this.storage.set("allergy_egg",this.allergy_egg);
+    this.global.allergy_egg=this.allergy_egg;
   }
 
   update_low() {
-    this.storage.set("low_carb",this.low_carb);
+    this.global.low_carb=this.low_carb;
   }
 
   update_vegetarian() {
-    this.storage.set("vegetarian",this.vegetarian);
-  }
-
-  refreshGlobal() {
-    this.global.userGender = this.gender;
-    this.global.userWeight = this.weight;
-    this.global.userHeight = this.height;
-    this.global.userAge = this.age;
+    this.global.vegetarian=this.vegetarian;
   }
 
   ionViewWillLeave(){
-    this.refreshGlobal();
+    this.global.save();
   }
 }
