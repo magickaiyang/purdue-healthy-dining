@@ -74,6 +74,7 @@ export class CaloryCalculationPage{
           text: 'Calory Pie Chart'
         },
        responsive: true,
+       maintainAspectRatio: false,
       }
      });
   }
