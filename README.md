@@ -26,7 +26,7 @@ An app that allows Purdue students to eat healthier in the dining courts. The ap
 
 ### Design
 
-<img src="https://github.com/magickaiyang/purdue-healthy-dining/blob/master/DesignFlowDraft.jpeg">
+<img src="https://github.com/magickaiyang/purdue-healthy-dining/blob/master/information/DesignFlowDraft.jpeg">
 
 ---
 

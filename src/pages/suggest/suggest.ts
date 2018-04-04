@@ -9,22 +9,18 @@ import {HttpClient} from '@angular/common/http';
 
 export class SuggestPage {
 
-  arr: any;
-  foodChoices: any;
-  savedMeal: any;
-  dishes: any;
+  arr: any; //nutrition info for dishes
+  foodChoices: any; //[nutrition base][choices]
+  foodSelections: any;  //[4]
+  savedMeal: any; //original menu data
+  dishes: any;  //reorganized from savedMeal
+
 
   constructor(private navParams: NavParams, private http: HttpClient) {
     this.arr = [];
     this.foodChoices = [];
     this.dishes = [];
-
-    /*for (let i = 0; i < (this.arr.length); i++) {
-      this.arr[i] = [];
-      for (let j = 0; j < 7; j++) {
-        this.arr[i][j] = Math.floor(Math.random() * 51);
-      }
-    }*/
+    this.foodSelections=[];
 
     this.savedMeal = this.navParams.get('savedMeal');
     let j, k;
@@ -34,8 +30,7 @@ export class SuggestPage {
         let dish = station.Items[k];
         this.dishes.push({
           name: dish.Name,
-          id: dish.ID,
-          selected: false
+          id: dish.ID
         })
       }
     }
@@ -46,11 +41,11 @@ export class SuggestPage {
       this.loadXML(dish.id, i);
     }
 
-    this.generate();
+    this.generate();  //generate suggestions
   }
 
   async generate() {
-    await this.sleep(2000);
+    await this.sleep(2000); //for now, pause for two seconds to wait for info to load over network
 
     console.log(this.arr);
     console.log(this.dishes);
@@ -60,10 +55,19 @@ export class SuggestPage {
     }
 
     for(let i=0;i<4;i++) {
-      this.dishes[this.foodChoices[i]].selected=true;
+      let index=0;
+      this.foodSelections[i]=this.foodChoices[i][index];  //choose first one
+      for(let j=0;j<i;j++) {
+        if(this.foodSelections[j]==this.foodSelections[i]) {
+          this.foodSelections[i]=this.foodChoices[i][++index];  //next one
+          j=0;  //search from the beginning
+        }
+      }
     }
+    console.log('this.foodSelections');
+    console.log(this.foodSelections);
 
-    console.log(this.dishes);
+    console.log(this.dishes[this.foodSelections[0]].name);
   }
 
   sleep(ms) {
@@ -110,7 +114,7 @@ export class SuggestPage {
   }
 
   testNut(nutIndex, nutWeight) {
-    console.log('nutindex='+nutIndex);
+    //console.log('nutindex='+nutIndex);
 
     let calArr = [];
 
@@ -119,18 +123,18 @@ export class SuggestPage {
       calArr[0][j] = {index: j, value: this.arr[j][nutIndex]};
     }
 
-    calArr[0].sort(this.sortPair);
+    calArr[0].sort(SuggestPage.sortPair);
 
     for (let i = 1; i < 4; i++) {
       calArr[i] = [];
       for (let j = 0; j < (this.arr.length); j++) {
         calArr[i][j] = {index: j, value: this.arr[j][i + 3]};
       }
-      calArr[i].sort(this.sortPair);
+      calArr[i].sort(SuggestPage.sortPair);
     }
 
-    console.log('calArr');
-    console.log(calArr);
+    //console.log('calArr');
+    //console.log(calArr);
 
     //==============================================
     let weight = [4, 2, 2, 2];
@@ -141,7 +145,7 @@ export class SuggestPage {
     }
     weight[0] = nutWeight;
 
-    console.log('weight[]='+weight);
+    //console.log('weight[]='+weight);
     //===============================================
     let score = [];
     for (let j = 0; j < (this.arr.length); j++) {
@@ -151,7 +155,7 @@ export class SuggestPage {
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < (this.arr.length); j++) {
         if(calArr[i][j].index==3) {
-          console.log(score[calArr[i][j].index]);
+          //console.log(score[calArr[i][j].index]);
         }
 
         if (i == 0) {
@@ -163,23 +167,42 @@ export class SuggestPage {
       }
     }
 
-    score.sort(this.sortPair);
+    score.sort(SuggestPage.sortPair);
 
-    console.log('score[]');
-    console.log(score);
+    //console.log('score[]');
+    //console.log(score);
 
-    let index = this.arr.length-1;
-    for (let i = 0; i < 4; i++) {
+    let choices=[];
+    for(let i=0;i<5&&i<score.length;i++) {
+      choices[i]=score[this.arr.length-1-i].index;
+    }
+    /*for (let i = 0; i < 4; i++) {
       if (this.foodChoices[i] == score[index].index) {
         index--;
         i = 0;
       }
-    }
-    return score[index].index;
+    }*/
+
+    return choices;
   }
 
-  sortPair(a, b) {
+  static sortPair(a, b) {
     return a.value - b.value;
   }
 
+  onSelectEnergy() {
+    console.log(this.foodSelections[0]);
+  }
+
+  onSelectCarb() {
+
+  }
+
+  onSelectProtein() {
+
+  }
+
+  onSelectFiber() {
+
+  }
 }
