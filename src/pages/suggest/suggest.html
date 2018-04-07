@@ -10,7 +10,7 @@
 
   <ion-list-header>For energy:</ion-list-header>
   <ion-item>
-    <ion-select [(ngModel)]="foodSelections[0]" (ionChange)="onSelectEnergy()">
+    <ion-select class="full-width-select" [(ngModel)]="foodSelections[0]" (ionChange)="onSelectEnergy()">
       <ion-option *ngFor="let choice of foodChoices[0]" [value]="choice">
         {{dishes[choice].name}}
       </ion-option>
@@ -19,7 +19,7 @@
 
   <ion-list-header>For carbonhydrates:</ion-list-header>
   <ion-item>
-    <ion-select [(ngModel)]="foodSelections[1]" (ionChange)="onSelectCarb()">
+    <ion-select class="full-width-select" [(ngModel)]="foodSelections[1]" (ionChange)="onSelectCarb()">
       <ion-option *ngFor="let choice of foodChoices[1]" [value]="choice">
         {{dishes[choice].name}}
       </ion-option>
@@ -28,7 +28,7 @@
 
   <ion-list-header>For protein:</ion-list-header>
   <ion-item>
-    <ion-select [(ngModel)]="foodSelections[2]" (ionChange)="onSelectProtein()">
+    <ion-select class="full-width-select" [(ngModel)]="foodSelections[2]" (ionChange)="onSelectProtein()">
       <ion-option *ngFor="let choice of foodChoices[2]" [value]="choice">
         {{dishes[choice].name}}
       </ion-option>
@@ -37,7 +37,7 @@
 
   <ion-list-header>For dietary fiber:</ion-list-header>
   <ion-item>
-    <ion-select [(ngModel)]="foodSelections[3]" (ionChange)="onSelectFiber()">
+    <ion-select class="full-width-select" [(ngModel)]="foodSelections[3]" (ionChange)="onSelectFiber()">
       <ion-option *ngFor="let choice of foodChoices[3]" [value]="choice">
         {{dishes[choice].name}}
       </ion-option>

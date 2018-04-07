@@ -13,7 +13,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {SettingsPage} from "../pages/settings/settings";
-import {ChartPage} from "../pages/chart/chart";
 import {SuggestPage} from "../pages/suggest/suggest";
 import { GlobalProvider } from '../providers/global/global';
 
@@ -24,7 +23,6 @@ import { GlobalProvider } from '../providers/global/global';
     MenuPage,
     CaloryCalculationPage,
     SettingsPage,
-    ChartPage,
     SuggestPage
   ],
   imports: [
@@ -40,7 +38,6 @@ import { GlobalProvider } from '../providers/global/global';
     MenuPage,
     CaloryCalculationPage,
     SettingsPage,
-    ChartPage,
     SuggestPage
   ],
   providers: [
