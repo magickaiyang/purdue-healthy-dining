@@ -3,7 +3,6 @@ import { NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
-import { NavController } from 'ionic-angular';
 import { Chart } from 'chart.js';
 
 /**
@@ -28,7 +27,7 @@ export class CaloryCalculationPage{
   sumCaloryString: string;
   noInfo: any;
   hasBadInfo: boolean;
-  totalCaloryOneDay: number; 
+  totalCaloryOneDay: number;
   totalCaloryOneDayString: string;
   caloryPercentage: string;
 
@@ -48,13 +47,13 @@ export class CaloryCalculationPage{
     this.hasBadInfo = false;
     this.calculateCaloryOneDay();
     this.caloryPercentage = "0.00%";
-    
+
   }
 
   createPieChart() {
        //PIE CHART
-     var pie = document.getElementById("pieChart");
-     var pieChart = new Chart(pie, {
+     let pie = document.getElementById("pieChart");
+     let pieChart = new Chart(pie, {
       type: 'pie',
       data: {
         labels: ["Calories intake for this meal", "Calories you still can intake today"],

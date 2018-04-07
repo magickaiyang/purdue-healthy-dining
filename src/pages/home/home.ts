@@ -3,7 +3,6 @@ import {NavController} from 'ionic-angular';
 import {HttpClient} from '@angular/common/http';
 import {MenuPage} from "../menu/menu";
 import {SettingsPage} from "../settings/settings";
-import {ChartPage} from "../chart/chart";
 import {SuggestPage} from "../suggest/suggest";
 
 @Component({
@@ -57,16 +56,27 @@ export class HomePage {
   parseXML(data) {
     this.savedData = data;  //save data to process after a meal time has been selected
 
-    var i;
-    for (i in data.Meals) {  //get list of meal times
-      var meal = data.Meals[i];
-      this.meals.push({name: meal.Name});
+    for (let i in data.Meals) {  //get list of meal times
+      let meal = data.Meals[i];
+      let Hours={StartTime: meal.Hours.StartTime.substring(0,5), EndTime: meal.Hours.EndTime.substring(0,5)}; //hour and minute only
+      this.meals.push({name: meal.Name, hours: Hours});
     }
 
-    if (!this.meals[0])
+    if (!this.meals[0]) {
       this.mealTime = "";
-    else
-      this.mealTime = this.meals[0].name;  //set default meal time to the first available
+    }
+    else {
+      let currentHour=new Date().getHours();
+      this.mealTime = this.meals[0].name;  //early in the morning! set default meal time to the first available
+
+      for(let i=this.meals.length-1;i>=0;i--) {
+        console.log(parseInt(this.meals[i].hours.StartTime.substring(0,2)));
+        if(currentHour>=parseInt(this.meals[i].hours.StartTime.substring(0,2))) {
+          this.mealTime=this.meals[i].name;
+          break;
+        }
+      }
+    }
 
     this.onSelectMeal();  //refresh dishes
   }
@@ -99,9 +109,5 @@ export class HomePage {
         dish.Selected = false;
       }
     }
-  }
-
-  chart_demo() {
-    this.navCtrl.push(ChartPage);
   }
 }

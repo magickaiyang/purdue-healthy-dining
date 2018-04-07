@@ -28,7 +28,7 @@
     <ion-label>Meal Time</ion-label>
     <ion-select [(ngModel)]="mealTime" (ionChange)="onSelectMeal()">
       <ion-option *ngFor="let mt of meals" [value]="mt.name">
-        {{mt.name}}
+        {{mt.name}}  {{mt.hours.StartTime}}-{{mt.hours.EndTime}}
       </ion-option>
     </ion-select>
   </ion-item>
@@ -40,8 +40,5 @@
   </button>
   <button ion-button block color="secondary" (click)="settings()">
     Settings
-  </button>
-  <button ion-button block color="danger" (click)="chart_demo()">
-    Go to chart demo page!
   </button>
 </ion-content>
