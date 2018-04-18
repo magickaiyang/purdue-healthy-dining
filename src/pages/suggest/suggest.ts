@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {NavParams} from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
 import {HttpClient} from '@angular/common/http';
+import {CaloryCalculationPage} from "../calory-calculation/calory-calculation";
 
 @Component({
   selector: 'page-suggest',
@@ -16,7 +17,7 @@ export class SuggestPage {
   dishes: any;  //reorganized from savedMeal
 
 
-  constructor(private navParams: NavParams, private http: HttpClient) {
+  constructor(private navCtrl: NavController,private navParams: NavParams, private http: HttpClient) {
     this.arr = [];
     this.foodChoices = [];
     this.dishes = [];
@@ -68,6 +69,8 @@ export class SuggestPage {
     console.log(this.foodSelections);
 
     console.log(this.dishes[this.foodSelections[0]].name);
+
+
   }
 
   sleep(ms) {
@@ -188,6 +191,18 @@ export class SuggestPage {
 
   static sortPair(a, b) {
     return a.value - b.value;
+  }
+
+  openCaloryCalculation() {
+    let selectedID=[];
+
+    //selectedID.push({name:dish.Name,id:dish.ID});
+
+    let data = {
+      title: selectedID
+    };
+
+    this.navCtrl.push(CaloryCalculationPage, data);
   }
 
   onSelectEnergy() {

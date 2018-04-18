@@ -11,7 +11,6 @@ export class SettingsPage {
 
   allergy_peanut: boolean;
   allergy_egg: boolean;
-  low_carb: boolean;
   vegetarian: boolean;
   userGender: string;
   userWeight: number;
@@ -21,7 +20,6 @@ export class SettingsPage {
   constructor(public global: GlobalProvider) {
     this.allergy_peanut=this.global.allergy_peanut;
     this.allergy_egg=this.global.allergy_egg;
-    this.low_carb=this.global.low_carb;
     this.vegetarian=this.global.vegetarian;
     this.userGender = this.global.userGender;
     this.userWeight = this.global.userWeight;
@@ -51,10 +49,6 @@ export class SettingsPage {
 
   update_egg() {
     this.global.allergy_egg=this.allergy_egg;
-  }
-
-  update_low() {
-    this.global.low_carb=this.low_carb;
   }
 
   update_vegetarian() {

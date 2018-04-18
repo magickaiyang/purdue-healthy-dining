@@ -13,7 +13,6 @@ export class GlobalProvider {
 
   public allergy_peanut: boolean;
   public allergy_egg: boolean;
-  public low_carb: boolean;
   public vegetarian: boolean;
   public userGender: string;
   public userHeight: number;
@@ -26,7 +25,6 @@ export class GlobalProvider {
 
     this.allergy_peanut = false;
     this.allergy_egg = false;
-    this.low_carb = false;
     this.vegetarian = false;
     this.userGender = '';
     this.userAge = 0;
@@ -41,11 +39,6 @@ export class GlobalProvider {
     storage.get('allergy_egg').then((val) => {
       if (val) {
         this.allergy_egg = val;
-      }
-    });
-    storage.get('low_carb').then((val) => {
-      if (val) {
-        this.low_carb = val;
       }
     });
     storage.get('vegetarian').then((val) => {
@@ -78,7 +71,6 @@ export class GlobalProvider {
     this.storage.set("age" , this.userAge);
     this.storage.set("allergy_peanut",this.allergy_peanut);
     this.storage.set("allergy_egg",this.allergy_egg);
-    this.storage.set("low_carb",this.low_carb);
     this.storage.set("vegetarian",this.vegetarian);
   }
 }
