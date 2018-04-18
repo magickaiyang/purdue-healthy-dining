@@ -65,6 +65,7 @@ export class SuggestPage {
         }
       }
     }
+
     console.log('this.foodSelections');
     console.log(this.foodSelections);
 
@@ -196,12 +197,15 @@ export class SuggestPage {
   openCaloryCalculation() {
     let selectedID=[];
 
+    for(let i=0;i<this.foodSelections.length;i++) {
+      selectedID.push({name:this.dishes[this.foodSelections[i]].name, id:this.dishes[this.foodSelections[i]].id});
+    }
     //selectedID.push({name:dish.Name,id:dish.ID});
 
     let data = {
       title: selectedID
     };
-
+    console.log(data);
     this.navCtrl.push(CaloryCalculationPage, data);
   }
 
