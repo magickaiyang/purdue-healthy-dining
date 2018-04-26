@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color = "danger" floating>
     <ion-title>Calorie Calculator</ion-title>
   </ion-navbar>
 
@@ -19,11 +19,11 @@
     <ion-item *ngFor="let x of showList">
       {{x.name}}
 
-      <button ion-button outline item-end icon-right (click)="add(x)">
+      <button ion-button outline item-end icon-right (click)="add(x)" color = "danger" floating>
         +
       </button>
 
-      <button ion-button outline item-end icon-right (click)="minus(x)">
+      <button ion-button outline item-end icon-right (click)="minus(x)" color = "danger" floating>
         -
       </button>
 

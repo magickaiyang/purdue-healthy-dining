@@ -60,7 +60,7 @@ export class CaloryCalculationPage{
         datasets: [
           {
             label: "Milligrams",
-            backgroundColor: ["#9ef315","#15f3d9"],
+            backgroundColor: ["#6f8e26","#8e7127","#4286f4"],//CHANGED
             data: [this.sumCalory, this.totalCaloryOneDay-this.sumCalory]
           }
         ]
@@ -70,7 +70,7 @@ export class CaloryCalculationPage{
 
         title: {
           display: true,
-          text: 'Calory Pie Chart'
+          text: 'Calorie Pie Chart'
         },
        responsive: true,
        maintainAspectRatio: false,
@@ -124,7 +124,7 @@ export class CaloryCalculationPage{
     }
     let alert = this.alertCtrl.create({
 
-      title: 'We cannot find Calory information for the following items:',
+      title: 'We cannot find Calorie information for the following items:',
       subTitle: string1,
       buttons: ['OK']
     });

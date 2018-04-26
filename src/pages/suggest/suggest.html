@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color = "danger" floating>
     <ion-title>Suggestions</ion-title>
   </ion-navbar>
 </ion-header>
@@ -8,7 +8,7 @@
   <p>Please wait while the menu is being processed.</p>
   <p>It is recommended that you have the following dishes.<br/>For each category, choose your favorite dish!</p>
 
-  <ion-list-header>For energy:</ion-list-header>
+  <ion-list-header style = "text-decoration: none; color:sienna;">For energy:</ion-list-header>
   <ion-item>
     <ion-select class="full-width-select" [(ngModel)]="foodSelections[0]" (ionChange)="onSelectEnergy()">
       <ion-option *ngFor="let choice of foodChoices[0]" [value]="choice">
@@ -17,7 +17,7 @@
     </ion-select>
   </ion-item>
 
-  <ion-list-header>For carbonhydrates:</ion-list-header>
+  <ion-list-header style = "text-decoration: none; color:sienna;">For carbohydrates:</ion-list-header>
   <ion-item>
     <ion-select class="full-width-select" [(ngModel)]="foodSelections[1]" (ionChange)="onSelectCarb()">
       <ion-option *ngFor="let choice of foodChoices[1]" [value]="choice">
@@ -26,7 +26,7 @@
     </ion-select>
   </ion-item>
 
-  <ion-list-header>For protein:</ion-list-header>
+  <ion-list-header style = "text-decoration: none; color:sienna;">For protein:</ion-list-header>
   <ion-item>
     <ion-select class="full-width-select" [(ngModel)]="foodSelections[2]" (ionChange)="onSelectProtein()">
       <ion-option *ngFor="let choice of foodChoices[2]" [value]="choice">
@@ -35,7 +35,7 @@
     </ion-select>
   </ion-item>
 
-  <ion-list-header>For dietary fiber:</ion-list-header>
+  <ion-list-header style = "text-decoration: none; color:sienna;"> For dietary fiber:</ion-list-header>
   <ion-item>
     <ion-select class="full-width-select" [(ngModel)]="foodSelections[3]" (ionChange)="onSelectFiber()">
       <ion-option *ngFor="let choice of foodChoices[3]" [value]="choice">
@@ -44,6 +44,6 @@
     </ion-select>
   </ion-item>
 
-  <button ion-button full color="light" (click)="openCaloryCalculation()">Nutrition Calculation</button>
+  <button ion-button full color= "light" (click)="openCaloryCalculation()">Nutrition Calculation</button>
 
 </ion-content>
