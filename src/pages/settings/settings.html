@@ -1,4 +1,4 @@
-<ion-header color = "danger" floating>
+<ion-header color="danger" floating>
   <ion-navbar>
     <ion-title>Settings</ion-title>
   </ion-navbar>
@@ -11,7 +11,7 @@
       Food Preferences (Sorry, currently not in effect.)
     </ion-list-header>
     <ion-item>
-      <ion-label color = "danger" floating>Vegetarian</ion-label>
+      <ion-label color="danger" floating>Vegetarian</ion-label>
       <ion-toggle color="energized" [(ngModel)]="vegetarian" (ionChange)="update_vegetarian()"></ion-toggle>
     </ion-item>
     <ion-item>
@@ -28,7 +28,7 @@
     </ion-list-header>
 
     <ion-item>
-      <ion-label color = "danger" floating>Gender</ion-label>
+      <ion-label color="danger" floating>Gender</ion-label>
       <ion-select [(ngModel)]="userGender" (ionChange)="onSelectGender()">
         <ion-option value="Male">Male</ion-option>
         <ion-option value="Female">Female</ion-option>
@@ -36,17 +36,17 @@
     </ion-item>
 
     <ion-item>
-      <ion-label color = "danger" floating>Weight(kg)</ion-label>
+      <ion-label color="danger" floating>Weight(kg)</ion-label>
       <ion-input type="text" [(ngModel)]="userWeight" (ionChange)="update_weight()"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color = "danger" floating>Height(cm)</ion-label>
+      <ion-label color="danger" floating>Height(cm)</ion-label>
       <ion-input type="text" [(ngModel)]="userHeight" (ionChange)="update_height()"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color = "danger" floating>Age</ion-label>
+      <ion-label color="danger" floating>Age</ion-label>
       <ion-input type="text" [(ngModel)]="userAge" (ionChange)="update_age()"></ion-input>
     </ion-item>
 

@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-navbar color = "danger" floating>
-    <ion-title >Home</ion-title>
+  <ion-navbar color="danger" floating>
+    <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -10,12 +10,12 @@
     Select dining court, meal time and click one of the two buttons to begin!
   </p>
   <ion-item>
-    <ion-label color = "danger" floating>Date</ion-label>
-    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="today" (ionChange)="onSelectDate()" ></ion-datetime>
+    <ion-label color="danger" floating>Date</ion-label>
+    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="today" (ionChange)="onSelectDate()"></ion-datetime>
   </ion-item>
   <ion-item>
-    <ion-label color = "danger" floating>Dining Court</ion-label>
-    <ion-select [(ngModel)]="diningcourt" (ionChange)="onSelect()" color = "danger" floating>
+    <ion-label color="danger" floating>Dining Court</ion-label>
+    <ion-select [(ngModel)]="diningcourt" (ionChange)="onSelect()" color="danger" floating>
       <ion-option value="Earhart">Earhart</ion-option>
       <ion-option value="Ford">Ford</ion-option>
       <ion-option value="Wiley">Wiley</ion-option>
@@ -25,17 +25,18 @@
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label color = "danger" floating>Meal Time</ion-label> //color of fields
+    <ion-label color="danger" floating>Meal Time</ion-label>
+    //color of fields
     <ion-select class="full-width-select" [(ngModel)]="mealTime" (ionChange)="onSelectMeal()">
       <ion-option *ngFor="let mt of meals" [value]="mt.name">
-        {{mt.name}}  {{mt.hours.StartTime}}-{{mt.hours.EndTime}}
+        {{mt.name}} {{mt.hours.StartTime}}-{{mt.hours.EndTime}}
       </ion-option>
     </ion-select>
   </ion-item>
   <button ion-button block (click)="suggest()">
     Suggest a meal
   </button>
-  <button ion-button block (click)="choose()" >
+  <button ion-button block (click)="choose()">
     Choose your own meal
   </button>
   <button ion-button block color="buttons" (click)="settings()">

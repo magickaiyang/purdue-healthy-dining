@@ -29,10 +29,10 @@ export class HomePage {
   }
 
   suggest() {
-    let data={
+    let data = {
       savedMeal: this.savedMeal
     };
-    this.navCtrl.push(SuggestPage,data);
+    this.navCtrl.push(SuggestPage, data);
   }
 
   choose() {
@@ -44,7 +44,7 @@ export class HomePage {
     var url = 'https://api.hfs.purdue.edu/menus/v2/locations/';
     url += this.diningcourt;
     url += '/';
-    url += this.today.substr(0,10);
+    url += this.today.substr(0, 10);
 
     this.http.get(url)
       .subscribe((data) => {
@@ -58,7 +58,7 @@ export class HomePage {
 
     for (let i in data.Meals) {  //get list of meal times
       let meal = data.Meals[i];
-      let Hours={StartTime: meal.Hours.StartTime.substring(0,5), EndTime: meal.Hours.EndTime.substring(0,5)}; //hour and minute only
+      let Hours = {StartTime: meal.Hours.StartTime.substring(0, 5), EndTime: meal.Hours.EndTime.substring(0, 5)}; //hour and minute only
       this.meals.push({name: meal.Name, hours: Hours});
     }
 
@@ -66,13 +66,13 @@ export class HomePage {
       this.mealTime = "";
     }
     else {
-      let currentHour=new Date().getHours();
+      let currentHour = new Date().getHours();
       this.mealTime = this.meals[0].name;  //early in the morning! set default meal time to the first available
 
-      for(let i=this.meals.length-1;i>=0;i--) {
-        console.log(parseInt(this.meals[i].hours.StartTime.substring(0,2)));
-        if(currentHour>=parseInt(this.meals[i].hours.StartTime.substring(0,2))) {
-          this.mealTime=this.meals[i].name;
+      for (let i = this.meals.length - 1; i >= 0; i--) {
+        console.log(parseInt(this.meals[i].hours.StartTime.substring(0, 2)));
+        if (currentHour >= parseInt(this.meals[i].hours.StartTime.substring(0, 2))) {
+          this.mealTime = this.meals[i].name;
           break;
         }
       }

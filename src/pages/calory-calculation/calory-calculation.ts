@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { NavParams } from 'ionic-angular';
-import { HttpClient } from '@angular/common/http';
-import { AlertController } from 'ionic-angular';
-import { GlobalProvider } from '../../providers/global/global';
-import { Chart } from 'chart.js';
+import {Component} from '@angular/core';
+import {NavParams} from 'ionic-angular';
+import {HttpClient} from '@angular/common/http';
+import {AlertController} from 'ionic-angular';
+import {GlobalProvider} from '../../providers/global/global';
+import {Chart} from 'chart.js';
 
 /**
  * Generated class for the CaloryCalculationPage page.
@@ -18,10 +18,10 @@ import { Chart } from 'chart.js';
 })
 
 
-export class CaloryCalculationPage{
+export class CaloryCalculationPage {
 
   itemSelected: any;
-  showList : any;
+  showList: any;
   savedData: any;
   sumCalory: any;
   sumCaloryString: string;
@@ -39,7 +39,7 @@ export class CaloryCalculationPage{
     this.itemSelected = this.navParams.get('title');
     this.showList = [];
     this.noInfo = [];
-    for (let entry of this.itemSelected){
+    for (let entry of this.itemSelected) {
       this.showList.push({name: entry.name, count: 0.00, calory: 0.00, id: entry.id});
     }
     this.sumCalory = 0.00;
@@ -51,17 +51,17 @@ export class CaloryCalculationPage{
   }
 
   createPieChart() {
-       //PIE CHART
-     let pie = document.getElementById("pieChart");
-     let pieChart = new Chart(pie, {
+    //PIE CHART
+    let pie = document.getElementById("pieChart");
+    let pieChart = new Chart(pie, {
       type: 'pie',
       data: {
         labels: ["Calories intake for this meal", "Calories you still can intake today"],
         datasets: [
           {
             label: "Milligrams",
-            backgroundColor: ["#6f8e26","#8e7127","#4286f4"],//CHANGED
-            data: [this.sumCalory, this.totalCaloryOneDay-this.sumCalory]
+            backgroundColor: ["#6f8e26", "#8e7127", "#4286f4"],//CHANGED
+            data: [this.sumCalory, this.totalCaloryOneDay - this.sumCalory]
           }
         ]
       },
@@ -72,41 +72,41 @@ export class CaloryCalculationPage{
           display: true,
           text: 'Calorie Pie Chart'
         },
-       responsive: true,
-       maintainAspectRatio: false,
+        responsive: true,
+        maintainAspectRatio: false,
       }
-     });
+    });
   }
 
-  calculateCaloryOneDay(){
-    if (this.global.userGender === "Male"){
-      this.totalCaloryOneDay = (10*this.global.userWeight+6.25*this.global.userHeight-5*this.global.userAge-5)*1.4;
+  calculateCaloryOneDay() {
+    if (this.global.userGender === "Male") {
+      this.totalCaloryOneDay = (10 * this.global.userWeight + 6.25 * this.global.userHeight - 5 * this.global.userAge - 5) * 1.4;
       this.totalCaloryOneDayString = this.totalCaloryOneDay.toFixed(2) + 'Cal';
     }
-    else if(this.global.userGender === "Female"){
-      this.totalCaloryOneDay = (10*this.global.userWeight+6.25*this.global.userHeight-5*this.global.userAge-161)*1.4;
+    else if (this.global.userGender === "Female") {
+      this.totalCaloryOneDay = (10 * this.global.userWeight + 6.25 * this.global.userHeight - 5 * this.global.userAge - 161) * 1.4;
       this.totalCaloryOneDayString = this.totalCaloryOneDay.toFixed(2) + 'Cal';
     }
-    else{
+    else {
       console.log(this.global.userGender);
     }
   }
 
 
-  add(x){
-    x.count+=1;
-    this.sumCalory+=x.calory;
+  add(x) {
+    x.count += 1;
+    this.sumCalory += x.calory;
     this.sumCaloryString = this.sumCalory.toFixed(2) + 'Cal';
-    this.caloryPercentage = (this.sumCalory/this.totalCaloryOneDay * 100).toFixed(2) + '%';
+    this.caloryPercentage = (this.sumCalory / this.totalCaloryOneDay * 100).toFixed(2) + '%';
     this.createPieChart();
   }
 
-  minus(x){
-    if(x.count>0){
-      x.count-=1;
-      this.sumCalory-=x.calory;
+  minus(x) {
+    if (x.count > 0) {
+      x.count -= 1;
+      this.sumCalory -= x.calory;
       this.sumCaloryString = this.sumCalory.toFixed(2) + 'Cal';
-      this.caloryPercentage = (this.sumCalory/this.totalCaloryOneDay * 100).toFixed(2) + '%';
+      this.caloryPercentage = (this.sumCalory / this.totalCaloryOneDay * 100).toFixed(2) + '%';
       this.createPieChart();
     }
   }
@@ -116,7 +116,7 @@ export class CaloryCalculationPage{
 
     let count = 1;
 
-    for (let i of this.noInfo){
+    for (let i of this.noInfo) {
       string1 += count + '. ';
       string1 += i;
       string1 += '<br/>';
@@ -131,12 +131,13 @@ export class CaloryCalculationPage{
     alert.present();
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.loadXML();
 
   }
-  ionViewDidEnter(){
-    if (this.hasBadInfo){
+
+  ionViewDidEnter() {
+    if (this.hasBadInfo) {
       this.showAlert();
     }
 
@@ -144,10 +145,9 @@ export class CaloryCalculationPage{
   }
 
 
-
   loadXML() {
 
-    for (let entry of this.showList){
+    for (let entry of this.showList) {
       let url = 'https://api.hfs.purdue.edu/menus/v2/items/';
       url += entry.id;
 
@@ -167,11 +167,11 @@ export class CaloryCalculationPage{
     this.savedData = data;  //save data to process after a meal time has been selected
 
     //console.log(this.savedData);
-    try{
+    try {
       entry.calory = this.savedData.Nutrition[1].Value;
       //console.log(this.showList);
     }
-    catch(e){
+    catch (e) {
       this.noInfo.push(entry.name);
       const index: number = this.showList.indexOf(entry);
       if (index !== -1) {

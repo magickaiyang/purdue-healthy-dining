@@ -66,11 +66,11 @@ export class GlobalProvider {
 
   public save() {
     this.storage.set("gender", this.userGender);
-    this.storage.set("weight" , this.userWeight);
-    this.storage.set("height" , this.userHeight);
-    this.storage.set("age" , this.userAge);
-    this.storage.set("allergy_peanut",this.allergy_peanut);
-    this.storage.set("allergy_egg",this.allergy_egg);
-    this.storage.set("vegetarian",this.vegetarian);
+    this.storage.set("weight", this.userWeight);
+    this.storage.set("height", this.userHeight);
+    this.storage.set("age", this.userAge);
+    this.storage.set("allergy_peanut", this.allergy_peanut);
+    this.storage.set("allergy_egg", this.allergy_egg);
+    this.storage.set("vegetarian", this.vegetarian);
   }
 }

@@ -1,15 +1,15 @@
 <ion-header>
 
-  <ion-navbar color = "danger" floating>
+  <ion-navbar color="danger" floating>
     <ion-title>Menu</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content color = "danger" floating>
+<ion-content color="danger" floating>
   <ion-list *ngFor="let station of savedMeal.Stations">
     <ion-list-header>{{station.Name}}</ion-list-header>
-     
+
     <div *ngFor="let item of station.Items">
       <button ion-item *ngIf="item.Selected" color="danger" (click)="itemSelected(item)">
         {{ item.Name }}

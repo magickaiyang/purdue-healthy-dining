@@ -18,44 +18,44 @@ export class SettingsPage {
   userAge: number;
 
   constructor(public global: GlobalProvider) {
-    this.allergy_peanut=this.global.allergy_peanut;
-    this.allergy_egg=this.global.allergy_egg;
-    this.vegetarian=this.global.vegetarian;
+    this.allergy_peanut = this.global.allergy_peanut;
+    this.allergy_egg = this.global.allergy_egg;
+    this.vegetarian = this.global.vegetarian;
     this.userGender = this.global.userGender;
     this.userWeight = this.global.userWeight;
     this.userHeight = this.global.userHeight;
     this.userAge = this.global.userAge;
   }
 
-  onSelectGender(){
-    this.global.userGender=this.userGender;
+  onSelectGender() {
+    this.global.userGender = this.userGender;
   }
 
-  update_weight(){
-    this.global.userWeight=this.userWeight
+  update_weight() {
+    this.global.userWeight = this.userWeight
   }
 
-  update_height(){
-    this.global.userHeight=this.userHeight;
+  update_height() {
+    this.global.userHeight = this.userHeight;
   }
 
-  update_age(){
-    this.global.userAge=this.userAge;
+  update_age() {
+    this.global.userAge = this.userAge;
   }
 
   update_peanut() {
-    this.global.allergy_peanut=this.allergy_peanut;
+    this.global.allergy_peanut = this.allergy_peanut;
   }
 
   update_egg() {
-    this.global.allergy_egg=this.allergy_egg;
+    this.global.allergy_egg = this.allergy_egg;
   }
 
   update_vegetarian() {
-    this.global.vegetarian=this.vegetarian;
+    this.global.vegetarian = this.vegetarian;
   }
 
-  ionViewWillLeave(){
+  ionViewWillLeave() {
     this.global.save();
   }
 }

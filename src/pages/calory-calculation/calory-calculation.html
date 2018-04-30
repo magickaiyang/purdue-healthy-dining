@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar color = "danger" floating>
+  <ion-navbar color="danger" floating>
     <ion-title>Calorie Calculator</ion-title>
   </ion-navbar>
 
@@ -19,11 +19,11 @@
     <ion-item *ngFor="let x of showList">
       {{x.name}}
 
-      <button ion-button outline item-end icon-right (click)="add(x)" color = "danger" floating>
+      <button ion-button outline item-end icon-right (click)="add(x)" color="danger" floating>
         +
       </button>
 
-      <button ion-button outline item-end icon-right (click)="minus(x)" color = "danger" floating>
+      <button ion-button outline item-end icon-right (click)="minus(x)" color="danger" floating>
         -
       </button>
 
@@ -38,7 +38,7 @@
   <p>Total Calories: {{sumCaloryString}}</p>
   <p>Calories you need one day: {{totalCaloryOneDayString}}</p>
   <p>"%" Calories you will intake today for this meal: {{caloryPercentage}}</p>
-  
+
   <div align="center" class="ex1">
     <canvas id="pieChart" width="400" height="450"></canvas>
   </div>

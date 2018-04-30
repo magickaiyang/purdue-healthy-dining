@@ -17,11 +17,11 @@ export class SuggestPage {
   dishes: any;  //reorganized from savedMeal
 
 
-  constructor(private navCtrl: NavController,private navParams: NavParams, private http: HttpClient) {
+  constructor(private navCtrl: NavController, private navParams: NavParams, private http: HttpClient) {
     this.arr = [];
     this.foodChoices = [];
     this.dishes = [];
-    this.foodSelections=[];
+    this.foodSelections = [];
 
     this.savedMeal = this.navParams.get('savedMeal');
     let j, k;
@@ -36,7 +36,7 @@ export class SuggestPage {
       }
     }
 
-    for (let i=0;i<this.dishes.length;i++) {
+    for (let i = 0; i < this.dishes.length; i++) {
       let dish = this.dishes[i];
       this.arr[i] = [];
       this.loadXML(dish.id, i);
@@ -55,13 +55,13 @@ export class SuggestPage {
       this.foodChoices[i] = this.testNut(i, 4);
     }
 
-    for(let i=0;i<4;i++) {
-      let index=0;
-      this.foodSelections[i]=this.foodChoices[i][index];  //choose first one
-      for(let j=0;j<i;j++) {
-        if(this.foodSelections[j]==this.foodSelections[i]) {
-          this.foodSelections[i]=this.foodChoices[i][++index];  //next one
-          j=0;  //search from the beginning
+    for (let i = 0; i < 4; i++) {
+      let index = 0;
+      this.foodSelections[i] = this.foodChoices[i][index];  //choose first one
+      for (let j = 0; j < i; j++) {
+        if (this.foodSelections[j] == this.foodSelections[i]) {
+          this.foodSelections[i] = this.foodChoices[i][++index];  //next one
+          j = 0;  //search from the beginning
         }
       }
     }
@@ -77,7 +77,6 @@ export class SuggestPage {
   sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-
 
 
   loadXML(id, index) {
@@ -107,13 +106,13 @@ export class SuggestPage {
     }
     catch (e) { //no info for this dish
       this.arr[index].length = 7;
-      this.arr[index][0]=0; //make this dish super bad!
-      this.arr[index][1]=0;
-      this.arr[index][2]=0;
-      this.arr[index][3]=0;
-      this.arr[index][4]=5000;
-      this.arr[index][5]=5000;
-      this.arr[index][6]=5000;
+      this.arr[index][0] = 0; //make this dish super bad!
+      this.arr[index][1] = 0;
+      this.arr[index][2] = 0;
+      this.arr[index][3] = 0;
+      this.arr[index][4] = 5000;
+      this.arr[index][5] = 5000;
+      this.arr[index][6] = 5000;
     }
   }
 
@@ -158,7 +157,7 @@ export class SuggestPage {
 
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < (this.arr.length); j++) {
-        if(calArr[i][j].index==3) {
+        if (calArr[i][j].index == 3) {
           //console.log(score[calArr[i][j].index]);
         }
 
@@ -176,9 +175,9 @@ export class SuggestPage {
     //console.log('score[]');
     //console.log(score);
 
-    let choices=[];
-    for(let i=0;i<5&&i<score.length;i++) {
-      choices[i]=score[this.arr.length-1-i].index;
+    let choices = [];
+    for (let i = 0; i < 5 && i < score.length; i++) {
+      choices[i] = score[this.arr.length - 1 - i].index;
     }
     /*for (let i = 0; i < 4; i++) {
       if (this.foodChoices[i] == score[index].index) {
@@ -195,10 +194,10 @@ export class SuggestPage {
   }
 
   openCaloryCalculation() {
-    let selectedID=[];
+    let selectedID = [];
 
-    for(let i=0;i<this.foodSelections.length;i++) {
-      selectedID.push({name:this.dishes[this.foodSelections[i]].name, id:this.dishes[this.foodSelections[i]].id});
+    for (let i = 0; i < this.foodSelections.length; i++) {
+      selectedID.push({name: this.dishes[this.foodSelections[i]].name, id: this.dishes[this.foodSelections[i]].id});
     }
     //selectedID.push({name:dish.Name,id:dish.ID});
 

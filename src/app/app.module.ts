@@ -14,7 +14,7 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {SettingsPage} from "../pages/settings/settings";
 import {SuggestPage} from "../pages/suggest/suggest";
-import { GlobalProvider } from '../providers/global/global';
+import {GlobalProvider} from '../providers/global/global';
 
 @NgModule({
   declarations: [
