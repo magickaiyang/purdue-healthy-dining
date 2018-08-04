@@ -11,7 +11,6 @@ import {CaloryCalculationPage} from '../pages/calory-calculation/calory-calculat
 import {HttpClientModule} from '@angular/common/http';
 
 import {StatusBar} from '@ionic-native/status-bar';
-import {SplashScreen} from '@ionic-native/splash-screen';
 import {SettingsPage} from "../pages/settings/settings";
 import {SuggestPage} from "../pages/suggest/suggest";
 import {GlobalProvider} from '../providers/global/global';
@@ -42,7 +41,6 @@ import {GlobalProvider} from '../providers/global/global';
   ],
   providers: [
     StatusBar,
-    SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GlobalProvider
   ]

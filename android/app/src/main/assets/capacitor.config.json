@@ -1,0 +1,6 @@
+{
+  "appId": "com.reprincipia.phd",
+  "appName": "Purdue Healthy Dining",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}
