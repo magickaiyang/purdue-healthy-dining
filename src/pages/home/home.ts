@@ -42,7 +42,14 @@ export class HomePage {
 
   loadXML() {
     var url = 'https://api.hfs.purdue.edu/menus/v2/locations/';
-    url += this.diningcourt;
+
+    if(this.diningcourt) {
+      url += this.diningcourt;
+    }
+    else {
+      return;
+    }
+
     url += '/';
     url += this.today.substr(0, 10);
 

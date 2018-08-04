@@ -1,12 +1,12 @@
 <ion-header>
 
-  <ion-navbar color="danger" floating>
+  <ion-navbar floating>
     <ion-title>Menu</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content color="danger" floating>
+<ion-content floating>
   <ion-list *ngFor="let station of savedMeal.Stations">
     <ion-list-header>{{station.Name}}</ion-list-header>
 
@@ -20,5 +20,5 @@
     </div>
 
   </ion-list>
-  <button ion-button full color="light" (click)="openCaloryCalculation()">Nutrition Calculation</button>
+  <button ion-button full color="light" (click)="openCaloryCalculation()">Nutrient Calculation</button>
 </ion-content>

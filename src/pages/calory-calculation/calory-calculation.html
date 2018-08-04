@@ -1,15 +1,7 @@
-<!--
-  Generated template for the CaloryCalculationPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar color="danger" floating>
-    <ion-title>Calorie Calculator</ion-title>
+  <ion-navbar floating>
+    <ion-title>Nutrient Calculator</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -19,11 +11,11 @@
     <ion-item *ngFor="let x of showList">
       {{x.name}}
 
-      <button ion-button outline item-end icon-right (click)="add(x)" color="danger" floating>
+      <button ion-button outline item-end icon-right (click)="add(x)" floating>
         +
       </button>
 
-      <button ion-button outline item-end icon-right (click)="minus(x)" color="danger" floating>
+      <button ion-button outline item-end icon-right (click)="minus(x)" floating>
         -
       </button>
 
@@ -38,9 +30,29 @@
   <p>Total Calories: {{sumCaloryString}}</p>
   <p>Calories you need one day: {{totalCaloryOneDayString}}</p>
   <p>"%" Calories you will intake today for this meal: {{caloryPercentage}}</p>
-
   <div align="center" class="ex1">
     <canvas id="pieChart" width="400" height="450"></canvas>
+  </div>
+
+  <p>Total Carbohydrates: {{sumCarbohydratesString}}</p>
+  <p>Carbohydrates you need one day: {{totalCarbohydratesOneDayString}}</p>
+  <p>"%" Carbohydrates you will intake today for this meal: {{carbohydratesPercentage}}</p>
+  <div align="center" class="ex1">
+    <canvas id="pieChart2" width="400" height="450"></canvas>
+  </div>
+
+  <p>Total Protein: {{sumProteinString}}</p>
+  <p>Protein you need one day: {{totalProteinOneDayString}}</p>
+  <p>"%" Protein you will intake today for this meal: {{proteinPercentage}}</p>
+  <div align="center" class="ex1">
+    <canvas id="pieChart3" width="400" height="450"></canvas>
+  </div>
+
+  <p>Total Dietary Fiber: {{sumFiberString}}</p>
+  <p>Dietary Fiber you need one day: {{totalFiberOneDayString}}</p>
+  <p>"%" Dietary Fiber you will intake today for this meal: {{fiberPercentage}}</p>
+  <div align="center" class="ex1">
+    <canvas id="pieChart4" width="400" height="450"></canvas>
   </div>
 
 </ion-content>

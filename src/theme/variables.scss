@@ -27,21 +27,12 @@ $app-direction: ltr;
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
-$background-color: #a79354;//color of whole page
-$text-color: #68573E;//color of text on pages
-//$item-ios-detail-push-color: #3d471b;
-
-$item-ios-note-color: #3d471b;//color of text fields
-$item-wp-body-background-color:  #3d471b;//color of text fields
-$list-ios-header-color:#42530a;//setting and category
-$list-wp-text-color: #b6c586;
 $colors: (
-  primary: 	#4c550a,
-  buttons: #879429,
-  secondary: rgb(172, 151, 108),
-  danger: #3d471b,
-  light: #DED29E,
-  dark: #68573E
+  primary: #488aff,
+  secondary: #32db64,
+  danger: #f53d3d,
+  light: #f4f4f4,
+  dark: #222
 );
 
 // App iOS Variables
