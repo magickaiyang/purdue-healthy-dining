@@ -28,8 +28,8 @@ export class GlobalProvider {
     this.vegetarian = false;
     this.userGender = 'Female';
     this.userAge = 20;
-    this.userHeight = 6.0;
-    this.userWeight = 140;
+    this.userHeight = 180;
+    this.userWeight = 70;
 
     storage.get('allergy_peanut').then((val) => {
       if (val) {
@@ -48,19 +48,21 @@ export class GlobalProvider {
     });
 
     storage.get('gender').then((val) => {
+      if(val) {
       this.userGender = val;
+      }
     });
 
     storage.get('weight').then((val) => {
-      this.userWeight = val;
+      if(val){this.userWeight = val;}
     });
 
     storage.get('height').then((val) => {
-      this.userHeight = val;
+      if(val){this.userHeight = val;}
     });
 
     storage.get('age').then((val) => {
-      this.userAge = val;
+      if(val){this.userAge = val;}
     });
   }
 
