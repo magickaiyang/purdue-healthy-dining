@@ -26,10 +26,10 @@ export class GlobalProvider {
     this.allergy_peanut = false;
     this.allergy_egg = false;
     this.vegetarian = false;
-    this.userGender = '';
-    this.userAge = 0;
-    this.userHeight = 0;
-    this.userWeight = 0;
+    this.userGender = 'Female';
+    this.userAge = 20;
+    this.userHeight = 6.0;
+    this.userWeight = 140;
 
     storage.get('allergy_peanut').then((val) => {
       if (val) {
