@@ -8,22 +8,6 @@
   <ion-list>
 
     <ion-list-header>
-      Food Preferences (Sorry, currently not in effect.)
-    </ion-list-header>
-    <ion-item>
-      <ion-label floating>Vegetarian</ion-label>
-      <ion-toggle color="energized" [(ngModel)]="vegetarian" (ionChange)="update_vegetarian()"></ion-toggle>
-    </ion-item>
-    <ion-item>
-      <ion-label>Peanut</ion-label>
-      <ion-checkbox [(ngModel)]="allergy_peanut" (ionChange)="update_peanut()"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label>Egg</ion-label>
-      <ion-checkbox [(ngModel)]="allergy_egg" (ionChange)="update_egg()"></ion-checkbox>
-    </ion-item>
-
-    <ion-list-header>
       Personal Information
     </ion-list-header>
 
@@ -36,12 +20,12 @@
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Weight(kg)</ion-label>
+      <ion-label floating>Weight(lbs)</ion-label>
       <ion-input type="text" [(ngModel)]="userWeight" (ionChange)="update_weight()"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Height(cm)</ion-label>
+      <ion-label floating>Height(ft)</ion-label>
       <ion-input type="text" [(ngModel)]="userHeight" (ionChange)="update_height()"></ion-input>
     </ion-item>
 

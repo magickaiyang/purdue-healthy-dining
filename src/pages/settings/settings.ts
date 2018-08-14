@@ -22,8 +22,8 @@ export class SettingsPage {
     this.allergy_egg = this.global.allergy_egg;
     this.vegetarian = this.global.vegetarian;
     this.userGender = this.global.userGender;
-    this.userWeight = this.global.userWeight;
-    this.userHeight = this.global.userHeight;
+    this.userWeight = this.global.userWeight*2.20462;  //kg to lbs
+    this.userHeight = this.global.userHeight*0.0328084;  //cm to ft
     this.userAge = this.global.userAge;
   }
 
@@ -32,11 +32,11 @@ export class SettingsPage {
   }
 
   update_weight() {
-    this.global.userWeight = this.userWeight
+    this.global.userWeight = this.userWeight*0.453592;  //lbs to kg
   }
 
   update_height() {
-    this.global.userHeight = this.userHeight;
+    this.global.userHeight = this.userHeight*30.48;  //ft to cm
   }
 
   update_age() {
