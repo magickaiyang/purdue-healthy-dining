@@ -5,7 +5,7 @@ android {
     phdsign {
       keyAlias 'key0'
       keyPassword 'z98k12y30'
-      storeFile file('C:/Users/zh_ka/Downloads/key.jks')
+      storeFile file('C:/Users/zh_ka/OneDrive - purdue.edu/configs/key.jks')
       storePassword 'z98k12y30'
     }
   }

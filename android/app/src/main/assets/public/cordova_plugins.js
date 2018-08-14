@@ -23,7 +23,8 @@
         "pluginId": "ionic-plugin-keyboard",
         "clobbers": [
           "cordova.plugins.Keyboard"
-        ]
+        ],
+        "runs": true
       }
     ];
     module.exports.metadata =
