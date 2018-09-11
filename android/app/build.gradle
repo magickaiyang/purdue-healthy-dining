@@ -14,9 +14,10 @@ android {
     applicationId "com.reprincipia.phd"
     minSdkVersion 21
     targetSdkVersion 27
-    versionCode 1
-    versionName "1.0"
+    versionCode 2
+    versionName "1.3"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    signingConfig signingConfigs.phdsign
   }
   buildTypes {
     release {
@@ -24,6 +25,8 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
       signingConfig signingConfigs.phdsign
     }
+  }
+  productFlavors {
   }
 }
 
@@ -45,6 +48,8 @@ dependencies {
   androidTestImplementation 'com.android.support.test:runner:1.0.1'
   androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
   implementation project(':capacitor-android-plugins')
+  implementation 'com.google.firebase:firebase-messaging:17.1.0'
+  implementation 'com.android.support:support-v4:27.1.1'
 }
 
 apply from: 'capacitor.build.gradle'

@@ -5,6 +5,9 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {HomePage} from "../pages/home/home";
 import {GlobalProvider} from "../providers/global/global";
 
+import { Plugins } from '@capacitor/core';
+const { SplashScreen } = Plugins;
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -16,6 +19,7 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
+      SplashScreen.hide();
     });
   }
 }

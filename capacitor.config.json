@@ -2,5 +2,10 @@
   "appId": "com.reprincipia.phd",
   "appName": "Purdue Healthy Dining",
   "bundledWebRuntime": false,
-  "webDir": "www"
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1000
+    }
+  }
 }

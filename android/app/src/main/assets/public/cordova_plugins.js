@@ -32,7 +32,7 @@
     {
       "cordova-plugin-device": "1.1.7",
       "cordova-plugin-whitelist": "1.3.3",
-      "cordova-sqlite-storage": "2.3.3",
+      "cordova-sqlite-storage": "2.4.0",
       "ionic-plugin-keyboard": "2.2.1"
     };
     // BOTTOM OF METADATA
