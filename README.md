@@ -1,6 +1,9 @@
-# Purdue Healthy Dining
+# Purdue Healthy Dining (Maintenance only) 
+**An light-weight and smarter alternative to the official *Purdue Mobile Menus* app ,allowing Purdue students to eat healthier in the dining courts.**
 
-An app that allows Purdue students to eat healthier in the dining courts. The app counts calories based on serving sizes of the user-selected items on the menu each meal. It will also recommend to the user which foods would go together nicely based on their specific chosen diet.
+- Counts calories, carbonhydrates, fat and dietary fibers based on user-selected items on the menu.
+- Recommends which foods to eat based on nutrition needs of each indiviaul.
+- Easy-to-understand pie charts showing nutrition info of meals.
 
 ---
 
@@ -12,19 +15,16 @@ An app that allows Purdue students to eat healthier in the dining courts. The ap
 
 ---
 
-### TODOs
-1. Find nutrition data for dishes (DONE)
-2. Get debugging ready on iOS plaftorm
-3. Get the calculation page and cart working
-4. Create a healthiness index algorithm to rank different combinations of foods
-5. Make a clearer design draft
-6. Full design document
-7. Suggestion page
-8. Settings page
+### Functionalities
+1. Find nutrition data for dishes
+2. Calculation page and Cart page
+3. Healthiness index algorithm to rank different combinations of foods
+4. Suggestion page
+5. Settings page
 
 ---
 
-### Design
+### Interaction Flow
 
 <img src="https://github.com/magickaiyang/purdue-healthy-dining/blob/master/information/DesignFlowDraft.jpeg">
 
