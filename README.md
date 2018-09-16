@@ -1,8 +1,8 @@
 # Purdue Healthy Dining (Maintenance only) 
 **An light-weight and smarter alternative to the official *Purdue Mobile Menus* app ,allowing Purdue students to eat healthier in the dining courts.**
 
-- Counts calories, carbonhydrates, fat and dietary fibers based on user-selected items on the menu.
-- Recommends which foods to eat based on nutrition needs of each indiviaul.
+- Counts calories, carbohydrates, fat and dietary fibers based on user-selected items on the menu.
+- Recommends which foods to eat based on nutrition needs of each individaul.
 - Easy-to-understand pie charts showing nutrition info of meals.
 
 ---
