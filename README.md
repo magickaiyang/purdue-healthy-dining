@@ -5,6 +5,10 @@
 - Recommends which foods to eat based on nutrition needs of each individual.
 - Easy-to-understand pie charts showing nutrition info of meals.
 
+**Get it on Google Play: https://play.google.com/store/apps/details?id=com.reprincipia.phd**
+
+<img src="https://github.com/magickaiyang/purdue-healthy-dining/blob/master/information/Screenshot.png">
+
 ---
 
 ### Build Procedures for Developers
