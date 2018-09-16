@@ -8,6 +8,8 @@
 ---
 
 ### Build Procedures for Developers
+This app uses Ionic Framework (based on Angular), and is to be built by Capacitor to run on multiple platforms.
+
 1. Get latest LTS version of Node.js
 2. Clone the repository.
 ```
