@@ -7,11 +7,17 @@
 
 ---
 
-### Environment setup for Developers
+### Build Procedures for Developers
 1. Get latest LTS version of Node.js
-2. npm install -g cordova ionic
-3. Clone the repository.
-4. Start working!
+2. Clone the repository.
+```
+cd purdue-helthy-dining
+npm install --save @capacitor/core @capacitor/cli
+npx cap init
+npx cap copy
+npx cap open (opens native IDEs)
+```
+Remaining steps are platform dependent , and the app could be built for Android, iOS, UWP and Web.
 
 ---
 
